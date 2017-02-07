@@ -23,4 +23,15 @@ set_target_properties(curl PROPERTIES IMPORTED_LOCATION
 
 set(LOCAL_LDLIBS, '-lz')
 
+set(LIBS ${LIBS} android curl ssl crypto z log)
+
 add_subdirectory(${lib_src_DIR}/spotify-api-plusplus ${lib_build_DIR}/spotify-api-plusplus)
+
+set_target_properties(spotify-api-plusplus
+                      PROPERTIES
+                      LIBRARY_OUTPUT_DIRECTORY
+                      "${libs_DIR}/${ANDROID_ABI}")
+
+target_include_directories(spotify-api-plusplus PRIVATE
+                           ${libs_DIR}/${ANDROID_ABI}/include
+)
