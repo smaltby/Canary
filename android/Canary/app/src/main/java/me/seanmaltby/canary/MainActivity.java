@@ -1,10 +1,20 @@
 package me.seanmaltby.canary;
 
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import android.speech.SpeechRecognizer;
 import android.util.Log;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
 
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
@@ -13,13 +23,36 @@ import com.spotify.sdk.android.player.Config;
 import com.spotify.sdk.android.player.Spotify;
 import com.spotify.sdk.android.player.SpotifyPlayer;
 
+import java.lang.ref.WeakReference;
+import java.util.List;
+
 import static com.spotify.sdk.android.authentication.LoginActivity.REQUEST_CODE;
 
 public class MainActivity extends Activity
 {
     private static final String TAG = "MainActivity";
 
-    private static final int PERMISSIONS_REQUEST = 1;
+    static final int MSG_VOICE_INPUT = 1;
+    static final int MSG_ERROR_ON_INPUT = 3;
+
+    private Messenger mActivityMessenger = new Messenger(new IncomingHandler(this));
+    private Messenger mSpeechRecognitionMessenger;
+    private final ServiceConnection mSpeechRecognitionConnection = new ServiceConnection()
+    {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service)
+        {
+            Log.d(TAG, "onServiceConnected");
+            mSpeechRecognitionMessenger = new Messenger(service);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name)
+        {
+            Log.d(TAG, "onServiceDisconnected");
+            mSpeechRecognitionMessenger = null;
+        }
+    };
 
     private static final String CLIENT_ID = "3e189d315fa64c97abdeaf9f855815e3";
     private static final String REDIRECT_URI = "canary://callback";
@@ -30,6 +63,15 @@ public class MainActivity extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Button button = (Button) findViewById(R.id.listen_button);
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                listen();
+            }
+        });
 
         spotifyLogin();
     }
@@ -94,9 +136,8 @@ public class MainActivity extends Activity
 
     private void initialize()
     {
-        TextView tv = new TextView(this);
-        tv.setText("DisplayName = " + getMyDisplayName(mAccessToken));
-        setContentView(tv);
+        bindService(new Intent(this, SpeechRecognitionService.class), mSpeechRecognitionConnection, Context.BIND_AUTO_CREATE);
+        Log.d(TAG, "Binded services");
     }
 
     @Override
@@ -105,10 +146,51 @@ public class MainActivity extends Activity
         super.onDestroy();
     }
 
+    private void listen()
+    {
+        Message message = Message.obtain(null, SpeechRecognitionService.MSG_RECOGNIZER_START_LISTENING);
+        message.replyTo = mActivityMessenger;
+        try
+        {
+            mSpeechRecognitionMessenger.send(message);
+        } catch (RemoteException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     public native String getMyDisplayName(String accessToken);
     static
     {
         System.loadLibrary("hello-libs");
     }
 
+    static class IncomingHandler extends Handler
+    {
+        private WeakReference<MainActivity> mTarget;
+
+        IncomingHandler(MainActivity target)
+        {
+            mTarget = new WeakReference<>(target);
+        }
+
+        @Override
+        public void handleMessage(Message msg)
+        {
+            final MainActivity target = mTarget.get();
+
+            switch (msg.what)
+            {
+                case MSG_VOICE_INPUT:
+                    Log.d(TAG, "We got some voice input:");
+                    List<String> data = msg.getData().getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+                    for(String result : data)
+                        Log.d(TAG, "\t" + result);
+                    break;
+                case MSG_ERROR_ON_INPUT:
+                    Log.d(TAG, "Error on voice input");
+                    break;
+            }
+        }
+    }
 }

@@ -19,12 +19,6 @@
 #include <string>
 #include "SpotifyAPI.h"
 
-static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *userp)
-{
-    ((std::string*)userp)->append((char*)contents, size * nmemb);
-    return size * nmemb;
-}
-
 extern "C" JNIEXPORT jstring JNICALL
 Java_me_seanmaltby_canary_MainActivity_getMyDisplayName(JNIEnv *env, jobject thiz, jstring javaAccessToken)
 {
