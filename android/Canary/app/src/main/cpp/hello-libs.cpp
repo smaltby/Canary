@@ -18,7 +18,6 @@
 #include <curl/curl.h>
 #include <string>
 #include "SpotifyAPI.h"
-#include "models/Album.h"
 
 static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *userp)
 {
@@ -27,8 +26,14 @@ static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *use
 }
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_example_hellolibs_MainActivity_getAlbum(JNIEnv *env, jobject thiz) {
+Java_me_seanmaltby_canary_MainActivity_getMyDisplayName(JNIEnv *env, jobject thiz, jstring javaAccessToken)
+{
     SpotifyAPI api = SpotifyAPI();
-    Album album = *api.GetAlbum("0sNOF9WDwhWunNAHPD3Baj");
-    return env->NewStringUTF(album.GetName().c_str());
+    const char *accessToken = env->GetStringUTFChars(javaAccessToken, JNI_FALSE);
+
+    api.setAuthToken(std::string(accessToken));
+    User me = *api.GetMe();
+
+    env->ReleaseStringUTFChars(javaAccessToken, accessToken);
+    return env->NewStringUTF(me.GetBirthdate().c_str());
 }

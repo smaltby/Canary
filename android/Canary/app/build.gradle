@@ -5,7 +5,7 @@ android {
     buildToolsVersion = '23.0.3'
 
     defaultConfig {
-        applicationId = 'com.example.hellolibs'
+        applicationId = 'me.seanmaltby.canary'
         minSdkVersion 21
         targetSdkVersion 21
         versionCode = 1
@@ -41,10 +41,18 @@ android {
     }
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:21.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
+    compile 'com.spotify.sdk:spotify-auth-beta23-noconnect-2.20b@aar'
+    compile 'com.spotify.sdk:spotify-player-beta23-noconnect-2.20b@aar'
     // uncomment out this one to generate lib binaries,
     // and also uncommented out the one in settings.gradle
     // after lib is generated, just comment them out again
