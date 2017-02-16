@@ -64,14 +64,6 @@ public class MainActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button button = (Button) findViewById(R.id.listen_button);
-        button.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                listen();
-            }
-        });
 
         spotifyLogin();
     }
@@ -146,7 +138,13 @@ public class MainActivity extends Activity
         super.onDestroy();
     }
 
-    private void listen()
+    public native String getMyDisplayName(String accessToken);
+    static
+    {
+        System.loadLibrary("hello-libs");
+    }
+
+    public void listen(View view)
     {
         Message message = Message.obtain(null, SpeechRecognitionService.MSG_RECOGNIZER_START_LISTENING);
         message.replyTo = mActivityMessenger;
@@ -157,12 +155,6 @@ public class MainActivity extends Activity
         {
             e.printStackTrace();
         }
-    }
-
-    public native String getMyDisplayName(String accessToken);
-    static
-    {
-        System.loadLibrary("hello-libs");
     }
 
     static class IncomingHandler extends Handler
