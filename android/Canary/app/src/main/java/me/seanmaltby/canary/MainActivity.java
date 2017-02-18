@@ -63,6 +63,7 @@ public class MainActivity extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        initEnv();
         setContentView(R.layout.activity_main);
 
         spotifyLogin();
@@ -138,10 +139,11 @@ public class MainActivity extends Activity
         super.onDestroy();
     }
 
-    public native String getMyDisplayName(String accessToken);
+    public native void initEnv();
+    public native void parse(String command, String accessToken);
     static
     {
-        System.loadLibrary("hello-libs");
+        System.loadLibrary("main");
     }
 
     public void listen(View view)
@@ -176,13 +178,21 @@ public class MainActivity extends Activity
                 case MSG_VOICE_INPUT:
                     Log.d(TAG, "We got some voice input:");
                     List<String> data = msg.getData().getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+                    assert data != null;
                     for(String result : data)
-                        Log.d(TAG, "\t" + result);
+                    {
+                        target.parse(result, target.mAccessToken);
+                    }
                     break;
                 case MSG_ERROR_ON_INPUT:
                     Log.d(TAG, "Error on voice input");
                     break;
             }
         }
+    }
+
+    public static void playUri(String uri)
+    {
+        Log.d(TAG, "PLAYING URI: " + uri);
     }
 }
