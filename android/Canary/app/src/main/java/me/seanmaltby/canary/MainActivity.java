@@ -14,7 +14,6 @@ import android.os.RemoteException;
 import android.speech.SpeechRecognizer;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
@@ -63,7 +62,6 @@ public class MainActivity extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        initEnv();
         setContentView(R.layout.activity_main);
 
         spotifyLogin();
@@ -129,6 +127,9 @@ public class MainActivity extends Activity
 
     private void initialize()
     {
+        // Initialize native bridges
+        NativeBridge.init(mPlayer);
+
         bindService(new Intent(this, SpeechRecognitionService.class), mSpeechRecognitionConnection, Context.BIND_AUTO_CREATE);
         Log.d(TAG, "Binded services");
     }
@@ -139,7 +140,6 @@ public class MainActivity extends Activity
         super.onDestroy();
     }
 
-    public native void initEnv();
     public native void parse(String command, String accessToken);
     static
     {
@@ -176,23 +176,15 @@ public class MainActivity extends Activity
             switch (msg.what)
             {
                 case MSG_VOICE_INPUT:
-                    Log.d(TAG, "We got some voice input:");
                     List<String> data = msg.getData().getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                     assert data != null;
-                    for(String result : data)
-                    {
-                        target.parse(result, target.mAccessToken);
-                    }
+                    Log.d(TAG, "We got some voice input: " + data.get(0));
+                    target.parse(data.get(0), target.mAccessToken);
                     break;
                 case MSG_ERROR_ON_INPUT:
                     Log.d(TAG, "Error on voice input");
                     break;
             }
         }
-    }
-
-    public static void playUri(String uri)
-    {
-        Log.d(TAG, "PLAYING URI: " + uri);
     }
 }
