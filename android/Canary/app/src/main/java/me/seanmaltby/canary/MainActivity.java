@@ -127,7 +127,7 @@ public class MainActivity extends Activity
 
     private void initialize()
     {
-        // Initialize native bridges
+        // Initialize native bridge
         NativeBridge.init(mPlayer);
 
         bindService(new Intent(this, SpeechRecognitionService.class), mSpeechRecognitionConnection, Context.BIND_AUTO_CREATE);
