@@ -2,12 +2,11 @@ cmake_minimum_required(VERSION 3.5.1)
 
 set(CMAKE_VERBOSE_MAKEFILE on)
 
-set(lib_src_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+set(shared_codebase_DIR ${CMAKE_SOURCE_DIR}/../../../../../../cpp)
+set(libs_DIR ${CMAKE_SOURCE_DIR}/../../../../distribution)
 
 set(lib_build_DIR $ENV{HOME}/tmp)
 file(MAKE_DIRECTORY ${lib_build_DIR})
-
-set(libs_DIR ${CMAKE_SOURCE_DIR}/../../../../distribution)
 
 add_library(crypto STATIC IMPORTED)
 set_target_properties(crypto PROPERTIES IMPORTED_LOCATION
@@ -25,7 +24,7 @@ set(LOCAL_LDLIBS, '-lz')
 
 set(LIBS ${LIBS} android curl ssl crypto z log)
 
-add_subdirectory(${lib_src_DIR}/spotify-api-plusplus ${lib_build_DIR}/spotify-api-plusplus)
+add_subdirectory(${shared_codebase_DIR}/spotify-api-plusplus ${lib_build_DIR}/spotify-api-plusplus)
 
 set_target_properties(spotify-api-plusplus
                       PROPERTIES

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5.1)
 
-# configure import libs
+set(shared_codebase_DIR ${CMAKE_SOURCE_DIR}/../../../../../../cpp)
 set(libs_DIR ${CMAKE_SOURCE_DIR}/../../../../distribution)
 
 add_library(spotify-api-plusplus SHARED IMPORTED)
@@ -24,28 +24,19 @@ set(LOCAL_LDLIBS, '-lz')
 # build application's shared lib
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
 
-file(GLOB_RECURSE SRC_H
-        "*.h"
-        )
-
-file(GLOB_RECURSE SRC_CPP
-        "*.cpp"
-        )
-
-set(SRC ${SRC_H} ${SRC_CPP})
-
 add_library(main SHARED
-            CommandParser.h
+            ${shared_codebase_DIR}/CommandParser.h
+            ${shared_codebase_DIR}/CommandParser.cpp
+            ${shared_codebase_DIR}/SpotifyHandler.h
+            ${shared_codebase_DIR}/SpotifyHandler.cpp
             NativeBridge.h
-            SpotifyHandler.h
-            CommandParser.cpp
-            NativeBridge.cpp
-            SpotifyHandler.cpp)
+            NativeBridge.cpp)
 
 target_include_directories(main PRIVATE
                            ${libs_DIR}/${ANDROID_ABI}/include
                            ${libs_DIR}/include
                            ${CMAKE_CURRENT_SOURCE_DIR}
+                           ${shared_codebase_DIR}
                            )
 
 target_link_libraries(main
