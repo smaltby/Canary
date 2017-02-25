@@ -21,6 +21,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        print("Hello World in Swift")
+        Hello_Wrapper().hello_cpp_wrapped("World")
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,7 +32,7 @@ class ViewController: UIViewController {
 
     //MARK: Actions
     
-    @IBAction func searchButtonPressed(sender: AnyObject) {
+    @IBAction func searchButtonPressed(_ sender: AnyObject) {
         albumOutput.text = searchBox.text
     }
     
