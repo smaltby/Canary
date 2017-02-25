@@ -179,7 +179,7 @@ public class MainActivity extends Activity
                     List<String> data = msg.getData().getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                     assert data != null;
                     Log.d(TAG, "We got some voice input: " + data.get(0));
-                    target.parse(data.get(0), target.mAccessToken);
+                    target.parse(data.get(0).toLowerCase(), target.mAccessToken);
                     break;
                 case MSG_ERROR_ON_INPUT:
                     Log.d(TAG, "Error on voice input");
