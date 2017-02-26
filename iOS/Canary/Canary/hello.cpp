@@ -1,6 +1,7 @@
 #include "hello.hpp"
 #include <iostream>
 #include <SpotifyAPI.h>
+#include "CommandParser.h"
 
 void Hello::hello_cpp(const std::string& name)
 {

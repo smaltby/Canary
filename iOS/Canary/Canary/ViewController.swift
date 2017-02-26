@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  Canary
-//
-//  Created by Ben Gruber on 1/30/17.
-//  Copyright © 2017 Ben Gruber and Sean Maltby. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -22,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         print("Hello World in Swift")
-        Hello_Wrapper().hello_cpp_wrapped("World")
+        CommandParser_Wrapper().parse_wrapped("play gates by speak", with_token: "token")
     }
 
     override func didReceiveMemoryWarning() {

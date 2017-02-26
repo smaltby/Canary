@@ -2,7 +2,6 @@
 #define CANARY_COMMANDPARSER_H
 
 #include <string>
-#include <jni.h>
 #include <regex>
 
 class CommandParser

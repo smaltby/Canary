@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  Canary
-//
-//  Created by Ben Gruber on 1/30/17.
-//  Copyright © 2017 Ben Gruber and Sean Maltby. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain
