@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		84B4A9A91E5FEB2B00B3C3DA /* hello.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A9A71E5FEB2B00B3C3DA /* hello.cpp */; };
-		84B4A9AD1E5FEC6800B3C3DA /* Hello-Wrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A9AC1E5FEC6800B3C3DA /* Hello-Wrapper.mm */; };
 		84B4A9CF1E5FF6F900B3C3DA /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B4A9CC1E5FF6F900B3C3DA /* libcrypto.a */; };
 		84B4A9D01E5FF6F900B3C3DA /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B4A9CD1E5FF6F900B3C3DA /* libcurl.a */; };
 		84B4A9D11E5FF6F900B3C3DA /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B4A9CE1E5FF6F900B3C3DA /* libssl.a */; };
@@ -18,6 +16,13 @@
 		84F03F251E62895300896571 /* CommandParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F03D4E1E62894400896571 /* CommandParser.cpp */; };
 		84F03F271E62897800896571 /* SpotifyHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F03F041E62894500896571 /* SpotifyHandler.cpp */; };
 		84F03F2A1E628A5000896571 /* NativeBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F03F281E628A5000896571 /* NativeBridge.cpp */; };
+		84F03F2E1E628E4900896571 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F03F2C1E628E4900896571 /* SpotifyAudioPlayback.framework */; };
+		84F03F2F1E628E4900896571 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F03F2D1E628E4900896571 /* SpotifyAuthentication.framework */; };
+		84F03F311E628F0300896571 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F03F301E628F0300896571 /* AVFoundation.framework */; };
+		84F03F331E628F0E00896571 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F03F321E628F0E00896571 /* SystemConfiguration.framework */; };
+		84F03F381E62995E00896571 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F03F371E62995D00896571 /* SpotifyMetadata.framework */; };
+		84F03F3A1E6299B100896571 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F03F391E6299B100896571 /* LoginViewController.swift */; };
+		84F03F3C1E6299F100896571 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F03F3B1E6299F100896571 /* WebViewController.swift */; };
 		84F8A0311E622EBD00B5BF91 /* libspotify-api-plusplus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F8A0301E622EBD00B5BF91 /* libspotify-api-plusplus.a */; };
 		E4BEE5FE1E402E10001FA4F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BEE5FD1E402E10001FA4F1 /* AppDelegate.swift */; };
 		E4BEE6001E402E10001FA4F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BEE5FF1E402E10001FA4F1 /* ViewController.swift */; };
@@ -110,10 +115,6 @@
 
 /* Begin PBXFileReference section */
 		84B4A9A61E5FEB2A00B3C3DA /* Canary-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Canary-Bridging-Header.h"; sourceTree = "<group>"; };
-		84B4A9A71E5FEB2B00B3C3DA /* hello.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hello.cpp; sourceTree = "<group>"; };
-		84B4A9A81E5FEB2B00B3C3DA /* hello.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = hello.hpp; sourceTree = "<group>"; };
-		84B4A9AC1E5FEC6800B3C3DA /* Hello-Wrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "Hello-Wrapper.mm"; sourceTree = "<group>"; };
-		84B4A9AE1E5FEC7600B3C3DA /* Hello-Wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Hello-Wrapper.h"; sourceTree = "<group>"; };
 		84B4A9CC1E5FF6F900B3C3DA /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		84B4A9CD1E5FF6F900B3C3DA /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcurl.a; sourceTree = "<group>"; };
 		84B4A9CE1E5FF6F900B3C3DA /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
@@ -620,6 +621,13 @@
 		84F03F051E62894500896571 /* SpotifyHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpotifyHandler.h; sourceTree = "<group>"; };
 		84F03F281E628A5000896571 /* NativeBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NativeBridge.cpp; sourceTree = "<group>"; };
 		84F03F2B1E628A6D00896571 /* NativeBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeBridge.h; sourceTree = "<group>"; };
+		84F03F2C1E628E4900896571 /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAudioPlayback.framework; sourceTree = "<group>"; };
+		84F03F2D1E628E4900896571 /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
+		84F03F301E628F0300896571 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		84F03F321E628F0E00896571 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		84F03F371E62995D00896571 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
+		84F03F391E6299B100896571 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		84F03F3B1E6299F100896571 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		84F8A0301E622EBD00B5BF91 /* libspotify-api-plusplus.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libspotify-api-plusplus.a"; sourceTree = "<group>"; };
 		E4BEE5FA1E402E10001FA4F1 /* Canary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4BEE5FD1E402E10001FA4F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -641,11 +649,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F03F381E62995E00896571 /* SpotifyMetadata.framework in Frameworks */,
+				84F03F331E628F0E00896571 /* SystemConfiguration.framework in Frameworks */,
+				84F03F311E628F0300896571 /* AVFoundation.framework in Frameworks */,
 				84F8A0311E622EBD00B5BF91 /* libspotify-api-plusplus.a in Frameworks */,
+				84F03F2F1E628E4900896571 /* SpotifyAuthentication.framework in Frameworks */,
 				84B4AA291E5FFE5300B3C3DA /* libz.tbd in Frameworks */,
 				84B4A9CF1E5FF6F900B3C3DA /* libcrypto.a in Frameworks */,
 				84B4A9D01E5FF6F900B3C3DA /* libcurl.a in Frameworks */,
 				84B4A9D11E5FF6F900B3C3DA /* libssl.a in Frameworks */,
+				84F03F2E1E628E4900896571 /* SpotifyAudioPlayback.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,6 +693,11 @@
 		84B4AA271E5FFE5300B3C3DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84F03F371E62995D00896571 /* SpotifyMetadata.framework */,
+				84F03F321E628F0E00896571 /* SystemConfiguration.framework */,
+				84F03F301E628F0300896571 /* AVFoundation.framework */,
+				84F03F2C1E628E4900896571 /* SpotifyAudioPlayback.framework */,
+				84F03F2D1E628E4900896571 /* SpotifyAuthentication.framework */,
 				84B4AA281E5FFE5300B3C3DA /* libz.tbd */,
 			);
 			name = Frameworks;
@@ -1677,15 +1695,13 @@
 				E4BEE6041E402E10001FA4F1 /* Assets.xcassets */,
 				E4BEE6061E402E10001FA4F1 /* LaunchScreen.storyboard */,
 				E4BEE6091E402E10001FA4F1 /* Info.plist */,
-				84B4A9A71E5FEB2B00B3C3DA /* hello.cpp */,
-				84B4A9A81E5FEB2B00B3C3DA /* hello.hpp */,
 				84B4A9A61E5FEB2A00B3C3DA /* Canary-Bridging-Header.h */,
-				84B4A9AC1E5FEC6800B3C3DA /* Hello-Wrapper.mm */,
-				84B4A9AE1E5FEC7600B3C3DA /* Hello-Wrapper.h */,
 				84F03D431E62851D00896571 /* CommandParser-Wrapper.mm */,
 				84F03D451E62854600896571 /* CommandParser-Wrapper.h */,
 				84F03F281E628A5000896571 /* NativeBridge.cpp */,
 				84F03F2B1E628A6D00896571 /* NativeBridge.h */,
+				84F03F391E6299B100896571 /* LoginViewController.swift */,
+				84F03F3B1E6299F100896571 /* WebViewController.swift */,
 			);
 			path = Canary;
 			sourceTree = "<group>";
@@ -1919,14 +1935,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F03F3A1E6299B100896571 /* LoginViewController.swift in Sources */,
 				84F03F271E62897800896571 /* SpotifyHandler.cpp in Sources */,
 				84F03F251E62895300896571 /* CommandParser.cpp in Sources */,
 				E4BEE6001E402E10001FA4F1 /* ViewController.swift in Sources */,
-				84B4A9A91E5FEB2B00B3C3DA /* hello.cpp in Sources */,
-				84B4A9AD1E5FEC6800B3C3DA /* Hello-Wrapper.mm in Sources */,
 				84F03F2A1E628A5000896571 /* NativeBridge.cpp in Sources */,
 				84F03D441E62851D00896571 /* CommandParser-Wrapper.mm in Sources */,
 				E4BEE5FE1E402E10001FA4F1 /* AppDelegate.swift in Sources */,
+				84F03F3C1E6299F100896571 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2081,6 +2097,10 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/Canary/include",
 					"$(SRCROOT)/Canary",
@@ -2091,7 +2111,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Canary/libs",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.seanmaltby.Canary;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = me.seanmaltby.canary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Canary/Canary-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2107,6 +2128,10 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/Canary/include",
 					"$(SRCROOT)/Canary",
@@ -2117,7 +2142,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Canary/libs",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.seanmaltby.Canary;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = me.seanmaltby.canary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Canary/Canary-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
