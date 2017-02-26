@@ -1,23 +1,16 @@
-#ifndef SPOTIFY_PLUSPLUS_ARTISTSIMPLE_H
-#define SPOTIFY_PLUSPLUS_ARTISTSIMPLE_H
+#ifndef SPOTIFY_PLUSPLUS_TRACKLINK_H
+#define SPOTIFY_PLUSPLUS_TRACKLINK_H
 
-#include <string>
-#include <map>
-#include <memory>
-#include <vector>
-#include "Followers.h"
-#include "Image.h"
-#include "json.h"
+#include "utils/json.h"
 
-class ArtistSimple
+class TrackLink
 {
 public:
-    ArtistSimple(nlohmann::json artistJson);
-
+    TrackLink(nlohmann::json trackJson);
+    
     std::map<std::string, std::string> GetExternalUrls() const;
     std::string GetHref() const;
     std::string GetId() const;
-    std::string GetName() const;
     std::string GetType() const;
     std::string GetUri() const;
 
@@ -25,7 +18,6 @@ private:
     std::map<std::string, std::string> externalUrls;
     std::string href;
     std::string id;
-    std::string name;
     std::string type;
     std::string uri;
 };

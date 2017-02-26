@@ -2,7 +2,7 @@
 #define SPOTIFY_PLUSPLUS_CURLUTILS_H
 
 #include <curl/curl.h>
-#include "json.h"
+#include "utils/json.h"
 
 static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *userp)
 {
