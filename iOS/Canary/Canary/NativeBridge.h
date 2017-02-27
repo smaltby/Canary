@@ -1,9 +1,7 @@
-#ifndef NativeBridge_h
-#define NativeBridge_h
+#ifndef NativeBridge_C_Interface_h
+#define NativeBridge_C_Interface_h
 
-#include <string>
-
-void NativePlayUri(std::string uri);
+void NativePlayUri(const char* uri);
 
 void NativePause();
 

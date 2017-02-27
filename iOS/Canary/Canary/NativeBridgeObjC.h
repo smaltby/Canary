@@ -1,4 +1,6 @@
 #import <Foundation/Foundation.h>
-@interface CommandParser_Wrapper : NSObject
+#include "NativeBridge.h"
+@interface NativeBridgeObjC : NSObject
+- (void)playUri:(NSString *) uri;
 - (void)parse_wrapped:(NSString *)command with_token:(NSString *)accessToken;
 @end

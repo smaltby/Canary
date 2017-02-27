@@ -3,7 +3,7 @@ import UIKit
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, SPTAudioStreamingDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate {
 
     var window: UIWindow?
 	var session: SPTSession?
@@ -19,10 +19,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTAudioStreamingDelegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		print("Hello World in Swift")
+		// Set variables necessary for authentication
 		SPTAuth.defaultInstance().clientID = kClientId
 		SPTAuth.defaultInstance().redirectURL = URL(string:kCallbackURL)
 		SPTAuth.defaultInstance().requestedScopes = [SPTAuthStreamingScope]
 		SPTAuth.defaultInstance().sessionUserDefaultsKey = kSessionUserDefaultsKey
+		
+		// Start AudioStreamingController
+		do
+		{
+			try SPTAudioStreamingController.sharedInstance().start(withClientId: SPTAuth.defaultInstance().clientID, audioController: nil, allowCaching: true)
+			SPTAudioStreamingController.sharedInstance().delegate = self
+			SPTAudioStreamingController.sharedInstance().playbackDelegate = self
+			SPTAudioStreamingController.sharedInstance().diskCache = SPTDiskCache()
+			SPTAudioStreamingController.sharedInstance().login(withAccessToken: SPTAuth.defaultInstance().session.accessToken!)
+		} catch let error
+		{
+			print("Failed to start: \(error)")
+		}
         return true
     }
 	
