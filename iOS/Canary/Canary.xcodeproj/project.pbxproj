@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8446E1AD1E69E4D600FF7F0C /* NativeBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8446E1AC1E69E4D600FF7F0C /* NativeBridge.mm */; };
 		848CCCF61E6389B400D9EB70 /* NativeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CCCF51E6389B400D9EB70 /* NativeFunctions.swift */; };
 		84B4A9CF1E5FF6F900B3C3DA /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B4A9CC1E5FF6F900B3C3DA /* libcrypto.a */; };
 		84B4A9D01E5FF6F900B3C3DA /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B4A9CD1E5FF6F900B3C3DA /* libcurl.a */; };
 		84B4A9D11E5FF6F900B3C3DA /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B4A9CE1E5FF6F900B3C3DA /* libssl.a */; };
 		84B4AA291E5FFE5300B3C3DA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B4AA281E5FFE5300B3C3DA /* libz.tbd */; };
 		84F03D401E62830100896571 /* cpp in Resources */ = {isa = PBXBuildFile; fileRef = 84F03D3F1E62830100896571 /* cpp */; };
-		84F03D441E62851D00896571 /* NativeBridgeObjC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84F03D431E62851D00896571 /* NativeBridgeObjC.mm */; };
 		84F03F251E62895300896571 /* CommandParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F03D4E1E62894400896571 /* CommandParser.cpp */; };
 		84F03F271E62897800896571 /* SpotifyHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F03F041E62894500896571 /* SpotifyHandler.cpp */; };
 		84F03F2E1E628E4900896571 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F03F2C1E628E4900896571 /* SpotifyAudioPlayback.framework */; };
@@ -115,6 +115,7 @@
 
 /* Begin PBXFileReference section */
 		8407B47A1E63C7AE00F7BAA7 /* NativeBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeBridge.h; sourceTree = "<group>"; };
+		8446E1AC1E69E4D600FF7F0C /* NativeBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NativeBridge.mm; sourceTree = "<group>"; };
 		848CCCF51E6389B400D9EB70 /* NativeFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeFunctions.swift; sourceTree = "<group>"; };
 		84B4A9A61E5FEB2A00B3C3DA /* Canary-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Canary-Bridging-Header.h"; sourceTree = "<group>"; };
 		84B4A9CC1E5FF6F900B3C3DA /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
@@ -232,8 +233,6 @@
 		84F03D3D1E62800B00896571 /* CurlUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurlUtils.h; sourceTree = "<group>"; };
 		84F03D3E1E62800B00896571 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
 		84F03D3F1E62830100896571 /* cpp */ = {isa = PBXFileReference; lastKnownFileType = folder; name = cpp; path = /Users/admin/Documents/Canary/cpp; sourceTree = "<absolute>"; };
-		84F03D431E62851D00896571 /* NativeBridgeObjC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NativeBridgeObjC.mm; sourceTree = "<group>"; };
-		84F03D451E62854600896571 /* NativeBridgeObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeBridgeObjC.h; sourceTree = "<group>"; };
 		84F03D4E1E62894400896571 /* CommandParser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CommandParser.cpp; sourceTree = "<group>"; };
 		84F03D4F1E62894400896571 /* CommandParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommandParser.h; sourceTree = "<group>"; };
 		84F03D511E62894400896571 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -1696,12 +1695,11 @@
 				E4BEE6061E402E10001FA4F1 /* LaunchScreen.storyboard */,
 				E4BEE6091E402E10001FA4F1 /* Info.plist */,
 				84B4A9A61E5FEB2A00B3C3DA /* Canary-Bridging-Header.h */,
-				84F03D431E62851D00896571 /* NativeBridgeObjC.mm */,
-				84F03D451E62854600896571 /* NativeBridgeObjC.h */,
 				84F03F391E6299B100896571 /* LoginViewController.swift */,
 				84F03F3B1E6299F100896571 /* WebViewController.swift */,
 				848CCCF51E6389B400D9EB70 /* NativeFunctions.swift */,
 				8407B47A1E63C7AE00F7BAA7 /* NativeBridge.h */,
+				8446E1AC1E69E4D600FF7F0C /* NativeBridge.mm */,
 			);
 			path = Canary;
 			sourceTree = "<group>";
@@ -1939,8 +1937,8 @@
 				84F03F271E62897800896571 /* SpotifyHandler.cpp in Sources */,
 				84F03F251E62895300896571 /* CommandParser.cpp in Sources */,
 				E4BEE6001E402E10001FA4F1 /* ViewController.swift in Sources */,
+				8446E1AD1E69E4D600FF7F0C /* NativeBridge.mm in Sources */,
 				848CCCF61E6389B400D9EB70 /* NativeFunctions.swift in Sources */,
-				84F03D441E62851D00896571 /* NativeBridgeObjC.mm in Sources */,
 				E4BEE5FE1E402E10001FA4F1 /* AppDelegate.swift in Sources */,
 				84F03F3C1E6299F100896571 /* WebViewController.swift in Sources */,
 			);

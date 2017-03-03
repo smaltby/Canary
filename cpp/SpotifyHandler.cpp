@@ -87,10 +87,15 @@ std::string SpotifyHandler::next()
 
 std::string SpotifyHandler::toggleShuffle(bool shuffle)
 {
-    return "shuffle " + shuffle;
+    return "shuffle " + boolToString(shuffle);
 }
 
 std::string SpotifyHandler::toggleRepeat(bool repeat)
 {
-    return "repeat " + repeat;
+    return "repeat " + boolToString(repeat);
+}
+
+std::string SpotifyHandler::boolToString(bool b)
+{
+    return b ? "true" : "false";
 }

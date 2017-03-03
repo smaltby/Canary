@@ -36,6 +36,8 @@ public:
     std::string toggleRepeat(bool repeat);
 
 private:
+    std::string boolToString(bool b);
+    
     SpotifyAPI api;
 };
 

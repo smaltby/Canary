@@ -14,8 +14,8 @@ class ViewController: UIViewController {
     
     @IBAction func sendCommand(_ sender: UIButton) {
         print(commandTextField.text!)
-        NativeBridgeObjC().parse_wrapped(commandTextField.text, with_token: SPTAuth.defaultInstance().session.accessToken)
-        
+        let result:String = NativeBridge().parse_wrapped(commandTextField.text, with_token: SPTAuth.defaultInstance().session.accessToken)
+        print(result)
     }
 }
 
