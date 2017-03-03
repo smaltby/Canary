@@ -17,7 +17,7 @@ CommandParser::CommandParser()
     playSongBy = std::regex("^play (.+) by (.+)$");
     playSong = std::regex("^play (.+)$");
 
-    pause = std::regex("^(pause)$");
+    pause = std::regex("^(pause|paws)$");
     resume = std::regex("^(resume)$");
 
     skip = std::regex("^(skip|next)$");
