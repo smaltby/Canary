@@ -9,7 +9,7 @@ class CommandParser
 public:
     CommandParser();
 
-    void parse(std::string command, std::string accessToken);
+    std::string parse(std::string command, std::string accessToken);
 
 private:
     std::regex playAlbumBy;

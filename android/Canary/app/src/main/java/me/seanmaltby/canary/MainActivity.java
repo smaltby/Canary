@@ -140,7 +140,7 @@ public class MainActivity extends Activity
         super.onDestroy();
     }
 
-    public native void parse(String command, String accessToken);
+    public native String parse(String command, String accessToken);
     static
     {
         System.loadLibrary("main");
@@ -179,7 +179,8 @@ public class MainActivity extends Activity
                     List<String> data = msg.getData().getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                     assert data != null;
                     Log.d(TAG, "We got some voice input: " + data.get(0));
-                    target.parse(data.get(0).toLowerCase(), target.mAccessToken);
+                    String result = target.parse(data.get(0).toLowerCase(), target.mAccessToken);
+                    NativeBridge.handleInput(result);
                     break;
                 case MSG_ERROR_ON_INPUT:
                     Log.d(TAG, "Error on voice input");

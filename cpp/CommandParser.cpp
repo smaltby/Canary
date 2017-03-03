@@ -25,93 +25,54 @@ CommandParser::CommandParser()
     repeat = std::regex("^repeat (on|off)$");
 }
 
-void CommandParser::parse(std::string command, std::string accessToken)
+std::string CommandParser::parse(std::string command, std::string accessToken)
 {
     SpotifyHandler handler = SpotifyHandler(accessToken);
 
     std::smatch matcher;
 
     if(std::regex_search(command, matcher, playAlbumBy))
-    {
-        handler.playAlbumBy(matcher[1].str(), matcher[2].str());
-        return;
-    }
+        return handler.playAlbumBy(matcher[1].str(), matcher[2].str());
 
     if(std::regex_search(command, matcher, playAlbum))
-    {
-        handler.playAlbum(matcher[1].str());
-        return;
-    }
+        return handler.playAlbum(matcher[1].str());
 
     if(std::regex_search(command, matcher, playArtist))
-    {
-        handler.playArtist(matcher[1].str());
-        return;
-    }
+        return handler.playArtist(matcher[1].str());
 
     if(std::regex_search(command, matcher, playPlaylist))
-    {
-        handler.playPlaylist(matcher[1].str());
-        return;
-    }
+        return handler.playPlaylist(matcher[1].str());
 
     if(std::regex_search(command, matcher, playSongFromBy))
-    {
-        handler.playTrackFromBy(matcher[1].str(), matcher[2].str(), matcher[3].str());
-        return;
-    }
+        return handler.playTrackFromBy(matcher[1].str(), matcher[2].str(), matcher[3].str());
 
     if(std::regex_search(command, matcher, playSongByFrom))
-    {
-        handler.playTrackFromBy(matcher[1].str(), matcher[3].str(), matcher[2].str());
-        return;
-    }
+        return handler.playTrackFromBy(matcher[1].str(), matcher[3].str(), matcher[2].str());
 
     if(std::regex_search(command, matcher, playSongFrom))
-    {
-        handler.playTrackFrom(matcher[1].str(), matcher[2].str());
-        return;
-    }
+        return handler.playTrackFrom(matcher[1].str(), matcher[2].str());
 
     if(std::regex_search(command, matcher, playSongBy))
-    {
-        handler.playTrackBy(matcher[1].str(), matcher[2].str());
-        return;
-    }
+        return handler.playTrackBy(matcher[1].str(), matcher[2].str());
 
     if(std::regex_search(command, matcher, playSong))
-    {
-        handler.playTrack(matcher[1].str());
-        return;
-    }
+        return handler.playTrack(matcher[1].str());
 
     if(std::regex_search(command, matcher, pause))
-    {
-        handler.pause();
-        return;
-    }
+        return handler.pause();
 
     if(std::regex_search(command, matcher, resume))
-    {
-        handler.resume();
-        return;
-    }
+        return handler.resume();
 
     if(std::regex_search(command, matcher, skip))
-    {
-        handler.next();
-        return;
-    }
+        return handler.next();
 
     if(std::regex_search(command, matcher, shuffle))
-    {
-        handler.toggleShuffle(matcher[1].str() == "on");
-        return;
-    }
+        return handler.toggleShuffle(matcher[1].str() == "on");
 
     if(std::regex_search(command, matcher, repeat))
-    {
-        handler.toggleRepeat(matcher[1].str() == "on");
-    }
+        return handler.toggleRepeat(matcher[1].str() == "on");
+
+    return "error invalid input";
 }
 

@@ -9,31 +9,31 @@ class SpotifyHandler
 public:
     SpotifyHandler(std::string authToken);
 
-    void playTrackFromBy(std::string song, std::string album, std::string artist);
+    std::string playTrackFromBy(std::string song, std::string album, std::string artist);
 
-    void playTrackFrom(std::string song, std::string album);
+    std::string playTrackFrom(std::string song, std::string album);
 
-    void playTrackBy(std::string song, std::string artist);
+    std::string playTrackBy(std::string song, std::string artist);
 
-    void playTrack(std::string song);
+    std::string playTrack(std::string song);
 
-    void playAlbumBy(std::string album, std::string artist);
+    std::string playAlbumBy(std::string album, std::string artist);
 
-    void playAlbum(std::string album);
+    std::string playAlbum(std::string album);
 
-    void playArtist(std::string artist);
+    std::string playArtist(std::string artist);
 
-    void playPlaylist(std::string playlist);
+    std::string playPlaylist(std::string playlist);
 
-    void pause();
+    std::string pause();
 
-    void resume();
+    std::string resume();
 
-    void next();
+    std::string next();
 
-    void toggleShuffle(bool shuffle);
+    std::string toggleShuffle(bool shuffle);
 
-    void toggleRepeat(bool repeat);
+    std::string toggleRepeat(bool repeat);
 
 private:
     SpotifyAPI api;
