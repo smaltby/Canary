@@ -29,7 +29,6 @@ add_library(main SHARED
             ${shared_codebase_DIR}/CommandParser.cpp
             ${shared_codebase_DIR}/SpotifyHandler.h
             ${shared_codebase_DIR}/SpotifyHandler.cpp
-            NativeBridge.h
             NativeBridge.cpp)
 
 target_include_directories(main PRIVATE

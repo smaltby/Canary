@@ -1,7 +1,5 @@
-#include <NativeBridge.h>
 #include <CommandParser.h>
 #include <jni.h>
-#include <string>
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_me_seanmaltby_canary_MainActivity_parse(JNIEnv *env, jobject thiz, jstring javaCommand, jstring javaAccessToken)
