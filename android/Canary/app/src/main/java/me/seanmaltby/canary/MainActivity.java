@@ -55,7 +55,7 @@ public class MainActivity extends Activity
 
     private static final String CLIENT_ID = "3e189d315fa64c97abdeaf9f855815e3";
     private static final String REDIRECT_URI = "canary://callback";
-    private SpotifyPlayer mPlayer;
+    private SpotifyHandler mHandler;
     private String mAccessToken;
 
     @Override
@@ -105,8 +105,7 @@ public class MainActivity extends Activity
                         public void onInitialized(SpotifyPlayer player)
                         {
                             Log.d(TAG, "Initialized player");
-                            mPlayer = player;
-                            initialize();
+                            initialize(player);
                         }
 
                         @Override
@@ -125,10 +124,9 @@ public class MainActivity extends Activity
         }
     }
 
-    private void initialize()
+    private void initialize(SpotifyPlayer player)
     {
-        // Initialize native bridge
-        NativeBridge.init(mPlayer);
+        mHandler = new SpotifyHandler(player);
 
         bindService(new Intent(this, SpeechRecognitionService.class), mSpeechRecognitionConnection, Context.BIND_AUTO_CREATE);
         Log.d(TAG, "Binded services");
@@ -159,7 +157,7 @@ public class MainActivity extends Activity
         }
     }
 
-    static class IncomingHandler extends Handler
+    private static class IncomingHandler extends Handler
     {
         private WeakReference<MainActivity> mTarget;
 
@@ -180,7 +178,7 @@ public class MainActivity extends Activity
                     assert data != null;
                     Log.d(TAG, "We got some voice input: " + data.get(0));
                     String result = target.parse(data.get(0).toLowerCase(), target.mAccessToken);
-                    NativeBridge.handleInput(result);
+                    target.mHandler.handleInput(result);
                     break;
                 case MSG_ERROR_ON_INPUT:
                     Log.d(TAG, "Error on voice input");
