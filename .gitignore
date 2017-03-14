@@ -282,3 +282,4 @@ gradle-app.setting
 # End of https://www.gitignore.io/api/cmake,c++,android,intellij,xcode,swift,objective-c,gradle
 
 .DS_Store
+keystore.properties
