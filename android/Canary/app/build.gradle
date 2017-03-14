@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion = 21
+    compileSdkVersion = 25
     buildToolsVersion = '25.0.2'
 
     defaultConfig {
         applicationId = 'me.seanmaltby.canary'
         minSdkVersion 21
-        targetSdkVersion 21
+        targetSdkVersion 25
         versionCode = 1
         versionName = '1.0'
         ndk {
@@ -49,7 +49,7 @@ repositories {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:21.+'
+    compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     compile 'com.spotify.sdk:spotify-auth-beta23-noconnect-2.20b@aar'
     compile 'com.spotify.sdk:spotify-player-beta23-noconnect-2.20b@aar'
