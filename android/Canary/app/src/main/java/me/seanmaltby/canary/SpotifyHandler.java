@@ -1,5 +1,6 @@
 package me.seanmaltby.canary;
 
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -7,6 +8,8 @@ import com.spotify.sdk.android.player.Error;
 import com.spotify.sdk.android.player.Player;
 import com.spotify.sdk.android.player.PlayerEvent;
 import com.spotify.sdk.android.player.SpotifyPlayer;
+
+import java.util.Locale;
 
 public class SpotifyHandler
 {
@@ -38,6 +41,7 @@ public class SpotifyHandler
                     case kSpPlaybackNotifyTrackChanged:
                         Log.d(TAG, "Track changed, updating album cover");
                         mActivity.updateAlbumCover(mPlayer.getMetadata().currentTrack.albumCoverWebUrl);
+                        mActivity.speak("Playing " + mPlayer.getMetadata().currentTrack.name + " by " + mPlayer.getMetadata().currentTrack.artistName + " on " + mPlayer.getMetadata().currentTrack.albumName);
                         break;
                     case kSpPlaybackNotifyShuffleOn:
                         ((TextView) mActivity.findViewById(R.id.shuffle)).setText("Shuffle: True");
@@ -51,6 +55,7 @@ public class SpotifyHandler
                     case kSpPlaybackNotifyRepeatOff:
                         ((TextView) mActivity.findViewById(R.id.repeat)).setText("Repeat: False");
                         break;
+
                 }
             }
 
@@ -85,7 +90,7 @@ public class SpotifyHandler
                 toggleRepeat(commands[1].equals("true"));
                 break;
             case "error":
-                Log.d(TAG, input);      // TODO handle error gracefully
+                mActivity.speak("Error, " + input.substring(input.indexOf(' ')));
                 break;
         }
     }

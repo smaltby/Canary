@@ -12,6 +12,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.speech.SpeechRecognizer;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,6 +26,7 @@ import com.spotify.sdk.android.player.SpotifyPlayer;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
+import java.util.Locale;
 
 import static com.spotify.sdk.android.authentication.LoginActivity.REQUEST_CODE;
 
@@ -58,12 +60,22 @@ public class MainActivity extends Activity
     private static final String REDIRECT_URI = "canary://callback";
     private SpotifyHandler mHandler;
     private String mAccessToken;
+    private TextToSpeech mTextToSpeech;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mTextToSpeech=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener()
+        {
+            @Override
+            public void onInit(int status)
+            {
+                mTextToSpeech.setLanguage(Locale.UK);
+            }
+        });
 
         spotifyLogin();
     }
@@ -161,6 +173,11 @@ public class MainActivity extends Activity
     public void updateAlbumCover(String albumCoverUrl)
     {
         new DownloadImageTask((ImageView) findViewById(R.id.album_art)).execute(albumCoverUrl);
+    }
+
+    public void speak(String text)
+    {
+        mTextToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
     }
 
     private static class IncomingHandler extends Handler
