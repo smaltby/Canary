@@ -64,10 +64,10 @@ public class SpotifyHandler
                 next();
                 break;
             case "shuffle":
-                toggleShuffle(true);    // TODO parse commands[1] as boolean
+                toggleShuffle(commands[1].equals("true"));
                 break;
             case "repeat":
-                toggleRepeat(true);     // TODO parse commands[1] as boolean
+                toggleRepeat(commands[1].equals("true"));
                 break;
             case "error":
                 Log.d(TAG, input);      // TODO handle error gracefully
