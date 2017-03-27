@@ -22,13 +22,23 @@
         android:layout_centerHorizontal="true"
         android:onClick="listen" />
 
-    <ImageView
-        android:id="@+id/progress_bar"
-        android:layout_width="320dp"
-        android:layout_height="64dp"
+    <TextView
+        android:id="@+id/shuffle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/album_art"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="53dp"
-        app:srcCompat="@android:drawable/progress_horizontal" />
+        android:layout_marginTop="42dp"
+        android:ems="5"
+        android:text="Shuffle: " />
+
+    <TextView
+        android:id="@+id/repeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/album_art"
+        android:layout_marginTop="42dp"
+        android:ems="5"
+        android:text="Repeat: "
+        android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>

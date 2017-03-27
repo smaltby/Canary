@@ -1,6 +1,7 @@
 package me.seanmaltby.canary;
 
 import android.util.Log;
+import android.widget.TextView;
 
 import com.spotify.sdk.android.player.Error;
 import com.spotify.sdk.android.player.Player;
@@ -25,6 +26,8 @@ public class SpotifyHandler
     {
         mActivity = activity;
         mPlayer = player;
+        toggleShuffle(true);
+        toggleRepeat(true);
         mPlayer.addNotificationCallback(new Player.NotificationCallback()
         {
             @Override
@@ -35,6 +38,18 @@ public class SpotifyHandler
                     case kSpPlaybackNotifyTrackChanged:
                         Log.d(TAG, "Track changed, updating album cover");
                         mActivity.updateAlbumCover(mPlayer.getMetadata().currentTrack.albumCoverWebUrl);
+                        break;
+                    case kSpPlaybackNotifyShuffleOn:
+                        ((TextView) mActivity.findViewById(R.id.shuffle)).setText("Shuffle: True");
+                        break;
+                    case kSpPlaybackNotifyShuffleOff:
+                        ((TextView) mActivity.findViewById(R.id.shuffle)).setText("Shuffle: False");
+                        break;
+                    case kSpPlaybackNotifyRepeatOn:
+                        ((TextView) mActivity.findViewById(R.id.repeat)).setText("Repeat: True");
+                        break;
+                    case kSpPlaybackNotifyRepeatOff:
+                        ((TextView) mActivity.findViewById(R.id.repeat)).setText("Repeat: False");
                         break;
                 }
             }
