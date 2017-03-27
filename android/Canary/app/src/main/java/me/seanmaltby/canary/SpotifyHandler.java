@@ -4,12 +4,14 @@ import android.util.Log;
 
 import com.spotify.sdk.android.player.Error;
 import com.spotify.sdk.android.player.Player;
+import com.spotify.sdk.android.player.PlayerEvent;
 import com.spotify.sdk.android.player.SpotifyPlayer;
 
 public class SpotifyHandler
 {
     private static final String TAG = "SpotifyHandler";
-    private static SpotifyPlayer mPlayer;
+    private MainActivity mActivity;
+    private SpotifyPlayer mPlayer;
     private final Player.OperationCallback operationCallback = new Player.OperationCallback()
     {
         @Override
@@ -19,9 +21,30 @@ public class SpotifyHandler
         public void onError(Error error) {}
     };
 
-    public SpotifyHandler(SpotifyPlayer player)
+    public SpotifyHandler(MainActivity activity, final SpotifyPlayer player)
     {
+        mActivity = activity;
         mPlayer = player;
+        mPlayer.addNotificationCallback(new Player.NotificationCallback()
+        {
+            @Override
+            public void onPlaybackEvent(PlayerEvent playerEvent)
+            {
+                switch (playerEvent)
+                {
+                    case kSpPlaybackNotifyTrackChanged:
+                        Log.d(TAG, "Track changed, updating album cover");
+                        mActivity.updateAlbumCover(mPlayer.getMetadata().currentTrack.albumCoverWebUrl);
+                        break;
+                }
+            }
+
+            @Override
+            public void onPlaybackError(Error error)
+            {
+
+            }
+        });
     }
 
     public void handleInput(String input)

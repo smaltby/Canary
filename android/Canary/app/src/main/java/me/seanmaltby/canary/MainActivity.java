@@ -14,6 +14,7 @@ import android.os.RemoteException;
 import android.speech.SpeechRecognizer;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
@@ -98,7 +99,7 @@ public class MainActivity extends Activity
                 // Response was successful and contains auth token
                 case TOKEN:
                     Log.d(TAG, "Response contains auth token");
-                    Config playerConfig = new Config(this, response.getAccessToken(), CLIENT_ID);
+                    Config playerConfig = new Config(this, mAccessToken, CLIENT_ID);
                     Spotify.getPlayer(playerConfig, this, new SpotifyPlayer.InitializationObserver()
                     {
                         @Override
@@ -126,7 +127,7 @@ public class MainActivity extends Activity
 
     private void initialize(SpotifyPlayer player)
     {
-        mHandler = new SpotifyHandler(player);
+        mHandler = new SpotifyHandler(this, player);
 
         bindService(new Intent(this, SpeechRecognitionService.class), mSpeechRecognitionConnection, Context.BIND_AUTO_CREATE);
         Log.d(TAG, "Binded services");
@@ -155,6 +156,11 @@ public class MainActivity extends Activity
         {
             e.printStackTrace();
         }
+    }
+
+    public void updateAlbumCover(String albumCoverUrl)
+    {
+        new DownloadImageTask((ImageView) findViewById(R.id.album_art)).execute(albumCoverUrl);
     }
 
     private static class IncomingHandler extends Handler
