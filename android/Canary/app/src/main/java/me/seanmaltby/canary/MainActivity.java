@@ -207,6 +207,8 @@ public class MainActivity extends Activity
                     break;
                 case MSG_ERROR_ON_INPUT:
                     Log.d(TAG, "Error on voice input");
+                    String error = msg.getData().getString("error");
+                    target.mHandler.handleInput(error);
                     break;
             }
         }

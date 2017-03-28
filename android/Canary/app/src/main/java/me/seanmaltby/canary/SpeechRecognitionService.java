@@ -123,8 +123,10 @@ public class SpeechRecognitionService extends Service implements RecognitionList
     public void onError(int error)
     {
         mIsListening = false;
-        Log.d(TAG, "error = " + error);
         Message message = Message.obtain(null, MainActivity.MSG_ERROR_ON_INPUT);
+        Bundle errorBundle = new Bundle();
+        errorBundle.putString("error", "error I didn't quite catch that");
+        message.setData(errorBundle);
         try
         {
             mActivityMessenger.send(message);

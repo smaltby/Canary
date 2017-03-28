@@ -90,7 +90,7 @@ public class SpotifyHandler
                 toggleRepeat(commands[1].equals("true"));
                 break;
             case "error":
-                mActivity.speak("Error, " + input.substring(input.indexOf(' ')));
+                mActivity.speak(input.substring(input.indexOf(' ')));
                 break;
         }
     }

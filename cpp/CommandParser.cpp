@@ -78,10 +78,10 @@ std::string CommandParser::parse(std::string command, std::string accessToken)
             return handler.toggleRepeat(matcher[1].str() == "on");
     } catch(SpotifyException e)
     {
-        return "error " + std::string(e.what());
+        return "error error, " + std::string(e.what());
     } catch(CurlException e)
     {
-        return "error " + std::string(e.what());
+        return "error error, " + std::string(e.what());
     }
 
     return "error invalid input";
