@@ -41,7 +41,7 @@ public class SpotifyHandler
                     case kSpPlaybackNotifyTrackChanged:
                         Log.d(TAG, "Track changed, updating album cover");
                         mActivity.updateAlbumCover(mPlayer.getMetadata().currentTrack.albumCoverWebUrl);
-                        mActivity.speak("Playing " + mPlayer.getMetadata().currentTrack.name + " by " + mPlayer.getMetadata().currentTrack.artistName + " on " + mPlayer.getMetadata().currentTrack.albumName);
+                        mActivity.speak("Playing " + mPlayer.getMetadata().currentTrack.name + " by " + mPlayer.getMetadata().currentTrack.artistName);
                         break;
                     case kSpPlaybackNotifyShuffleOn:
                         ((TextView) mActivity.findViewById(R.id.shuffle)).setText("Shuffle: True");

@@ -25,6 +25,7 @@ public class SpeechRecognitionService extends Service implements RecognitionList
     private Intent mSpeechRecognizerIntent;
     private Messenger mActivityMessenger;
     private final Messenger mServiceMessenger = new Messenger(new IncomingHandler(this));
+    private Handler timeoutHandler = new Handler();
 
     private boolean mIsListening;
     private int mMusicVolume;
@@ -39,7 +40,7 @@ public class SpeechRecognitionService extends Service implements RecognitionList
         mSpeechRecognizer.setRecognitionListener(this);
         mSpeechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         mSpeechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                RecognizerIntent.LANGUAGE_MODEL_WEB_SEARCH);
         mSpeechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,
                 this.getPackageName());
     }
@@ -69,7 +70,6 @@ public class SpeechRecognitionService extends Service implements RecognitionList
                     if (!target.mIsListening)
                     {
                         target.mSpeechRecognizer.startListening(target.mSpeechRecognizerIntent);
-                        target.mIsListening = true;
                         Log.d(TAG, "Message started recognizer");
                     }
                     break;
@@ -79,6 +79,7 @@ public class SpeechRecognitionService extends Service implements RecognitionList
                     {
                         target.mSpeechRecognizer.cancel();
                         target.mIsListening = false;
+                        target.mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, target.mMusicVolume, 0);
                         Log.d(TAG, "Message cancelled recognizer");
                     }
                     break;
@@ -101,6 +102,7 @@ public class SpeechRecognitionService extends Service implements RecognitionList
     public void onBeginningOfSpeech()
     {
         Log.d(TAG, "onBeginingOfSpeech");
+        timeoutHandler.removeCallbacksAndMessages(null);
     }
 
     @Override
@@ -147,9 +149,27 @@ public class SpeechRecognitionService extends Service implements RecognitionList
     @Override
     public void onReadyForSpeech(Bundle params)
     {
+        if(mIsListening)
+            return;
+        mIsListening = true;
+        Log.d(TAG, "onReadyForSpeech");
         mMusicVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, 0);
-        Log.d(TAG, "onReadyForSpeech");
+
+        timeoutHandler.postDelayed(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                if(mIsListening)
+                {
+                    Log.d(TAG, "SpeechRecognizer timed out");
+                    mSpeechRecognizer.cancel();
+                    mIsListening = false;
+                    mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, mMusicVolume, 0);
+                }
+            }
+        }, 2000);
     }
 
     @Override

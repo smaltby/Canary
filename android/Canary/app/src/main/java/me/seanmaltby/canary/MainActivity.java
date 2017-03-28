@@ -73,7 +73,7 @@ public class MainActivity extends Activity
             @Override
             public void onInit(int status)
             {
-                mTextToSpeech.setLanguage(Locale.UK);
+                mTextToSpeech.setLanguage(Locale.US);
             }
         });
 
@@ -199,7 +199,9 @@ public class MainActivity extends Activity
                 case MSG_VOICE_INPUT:
                     List<String> data = msg.getData().getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                     assert data != null;
-                    Log.d(TAG, "We got some voice input: " + data.get(0));
+                    Log.d(TAG, "We got some voice input: ");
+                    for(String d : data)
+                        Log.d(TAG, "\t" + d);
                     String result = target.parse(data.get(0).toLowerCase(), target.mAccessToken);
                     target.mHandler.handleInput(result);
                     break;
