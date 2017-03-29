@@ -64,6 +64,19 @@ std::string SpotifyHandler::playArtist(std::string artist)
 
 std::string SpotifyHandler::playPlaylist(std::string playlist)
 {
+    // First, check my playlists
+    Pager<PlaylistSimple> myPlaylists = api.GetMyPlaylists();
+    for(int i = 0; i < myPlaylists.GetTotal(); ++i)
+    {
+        PlaylistSimple myPlaylist = myPlaylists.GetItems()[i];
+        std::string myPlaylistLower = myPlaylist.GetName();
+        std::transform(myPlaylistLower.begin(), myPlaylistLower.end(), myPlaylistLower.begin(), ::tolower);
+        std::transform(playlist.begin(), playlist.end(), playlist.begin(), ::tolower);
+        if(myPlaylistLower.find(playlist) != std::string::npos)
+            return "playuri " + myPlaylist.GetUri();
+    }
+
+    // Then, check all playlists
     Pager<PlaylistSimple> playlists = api.SearchPlaylists(playlist);
     if(playlists.GetTotal() > 0)
         return "playuri " + playlists.GetItems()[0].GetUri();
