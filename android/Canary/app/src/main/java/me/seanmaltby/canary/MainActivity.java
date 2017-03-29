@@ -202,8 +202,16 @@ public class MainActivity extends Activity
                     Log.d(TAG, "We got some voice input: ");
                     for(String d : data)
                         Log.d(TAG, "\t" + d);
-                    String result = target.parse(data.get(0).toLowerCase(), target.mAccessToken);
+
+                    String result = "";
+                    for(String d : data)
+                    {
+                        result = target.parse(d.toLowerCase(), target.mAccessToken);
+                        if(!result.equals("error no results found") && !result.equals("error invalid input"))
+                            break;
+                    }
                     target.mHandler.handleInput(result);
+
                     break;
                 case MSG_ERROR_ON_INPUT:
                     Log.d(TAG, "Error on voice input");

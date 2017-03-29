@@ -70,7 +70,8 @@ public class SpotifyHandler
     public void handleInput(String input)
     {
         String[] commands = input.split(" ");
-        switch (commands[0]) {
+        switch (commands[0])
+        {
             case "playuri":
                 playUri(commands[1]);
                 break;
