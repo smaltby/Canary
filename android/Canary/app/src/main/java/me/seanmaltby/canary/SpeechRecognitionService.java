@@ -45,7 +45,7 @@ public class SpeechRecognitionService extends Service implements RecognitionList
                 this.getPackageName());
     }
 
-    static class IncomingHandler extends Handler
+    private static class IncomingHandler extends Handler
     {
         private WeakReference<SpeechRecognitionService> mTarget;
 
@@ -122,10 +122,12 @@ public class SpeechRecognitionService extends Service implements RecognitionList
     @Override
     public void onError(int error)
     {
+        Log.e(TAG, "Speech error " + error);
+
         mIsListening = false;
         Message message = Message.obtain(null, MainActivity.MSG_ERROR_ON_INPUT);
         Bundle errorBundle = new Bundle();
-        errorBundle.putString("error", "error I didn't quite catch that");
+        errorBundle.putString("error", "error I didn't quite catch that");  // TODO different messages for different errors
         message.setData(errorBundle);
         try
         {

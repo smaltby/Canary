@@ -66,7 +66,7 @@ std::string SpotifyHandler::playPlaylist(std::string playlist)
 {
     // First, check my playlists
     Pager<PlaylistSimple> myPlaylists = api.GetMyPlaylists();
-    for(int i = 0; i < myPlaylists.GetTotal(); ++i)
+    for(int i = 0; i < myPlaylists.GetItems().size(); ++i)
     {
         PlaylistSimple myPlaylist = myPlaylists.GetItems()[i];
         std::string myPlaylistLower = myPlaylist.GetName();

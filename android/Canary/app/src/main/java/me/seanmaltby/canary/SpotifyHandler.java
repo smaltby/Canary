@@ -1,6 +1,5 @@
 package me.seanmaltby.canary;
 
-import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -8,8 +7,6 @@ import com.spotify.sdk.android.player.Error;
 import com.spotify.sdk.android.player.Player;
 import com.spotify.sdk.android.player.PlayerEvent;
 import com.spotify.sdk.android.player.SpotifyPlayer;
-
-import java.util.Locale;
 
 public class SpotifyHandler
 {
