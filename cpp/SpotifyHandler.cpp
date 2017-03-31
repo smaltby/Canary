@@ -38,31 +38,31 @@ std::string SpotifyHandler::playTrack(std::string song)
     return "error no resultsfound ";
 }
 
-std::string SpotifyHandler::playAlbumBy(std::string album, std::string artist)
+std::string SpotifyHandler::playAlbumBy(std::string album, std::string artist, bool shuffle)
 {
     Pager<AlbumSimple> albums = api.SearchAlbums("album:"+album+" artist"+artist);
     if(albums.GetTotal() > 0)
-        return "playuri " + albums.GetItems()[0].GetUri();
+        return "playuri " + albums.GetItems()[0].GetUri() + " " + (shuffle ? "true" : "false");
     return "error no results found";
 }
 
-std::string SpotifyHandler::playAlbum(std::string album)
+std::string SpotifyHandler::playAlbum(std::string album, bool shuffle)
 {
     Pager<AlbumSimple> albums = api.SearchAlbums("album:"+album);
     if(albums.GetTotal() > 0)
-        return "playuri " + albums.GetItems()[0].GetUri();
+        return "playuri " + albums.GetItems()[0].GetUri() + " " + (shuffle ? "true" : "false");
     return "error no results found";
 }
 
-std::string SpotifyHandler::playArtist(std::string artist)
+std::string SpotifyHandler::playArtist(std::string artist, bool shuffle)
 {
     Pager<Artist> artists = api.SearchArtists("artist:"+artist);
     if(artists.GetTotal() > 0)
-        return "playuri " + artists.GetItems()[0].GetUri();
+        return "playuri " + artists.GetItems()[0].GetUri() + " " + (shuffle ? "true" : "false");
     return "error no results found";
 }
 
-std::string SpotifyHandler::playPlaylist(std::string playlist)
+std::string SpotifyHandler::playPlaylist(std::string playlist, bool shuffle)
 {
     // First, check my playlists
     Pager<PlaylistSimple> myPlaylists = api.GetMyPlaylists();
@@ -73,7 +73,7 @@ std::string SpotifyHandler::playPlaylist(std::string playlist)
         std::transform(myPlaylistLower.begin(), myPlaylistLower.end(), myPlaylistLower.begin(), ::tolower);
         std::transform(playlist.begin(), playlist.end(), playlist.begin(), ::tolower);
         if(myPlaylistLower.find(playlist) != std::string::npos)
-            return "playuri " + myPlaylist.GetUri();
+            return "playuri " + myPlaylist.GetUri() + " " + (shuffle ? "true" : "false");
     }
 
     // Then, check all playlists

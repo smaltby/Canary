@@ -5,13 +5,13 @@
 
 CommandParser::CommandParser()
 {
-    playAlbumBy = std::regex("^play album (.+) by (.+)$");
-    playAlbumBy = std::regex("^play album (.+) by (.+)$");
-    playAlbum = std::regex("^play album (.+)$");
+    playAlbumBy = std::regex("^(play|shuffle) album (.+) by (.+)$");
+    playAlbumBy = std::regex("^(play|shuffle) album (.+) by (.+)$");
+    playAlbum = std::regex("^(play|shuffle) album (.+)$");
 
-    playArtist = std::regex("^play artist (.+)$");
+    playArtist = std::regex("^(play|shuffle) artist (.+)$");
 
-    playPlaylist = std::regex("^play playlist (.+)$");
+    playPlaylist = std::regex("^(play|shuffle) playlist (.+)$");
 
     playSongFromBy = std::regex("^play (.+) from (.+) by (.+)$");
     playSongByFrom = std::regex("^play (.+) by (.+) from (.+)$");
@@ -36,16 +36,16 @@ std::string CommandParser::parse(std::string command, std::string accessToken)
     try
     {
         if (std::regex_search(command, matcher, playAlbumBy))
-            return handler.playAlbumBy(matcher[1].str(), matcher[2].str());
+            return handler.playAlbumBy(matcher[2].str(), matcher[3].str(), matcher[1] == "shuffle");
 
         if (std::regex_search(command, matcher, playAlbum))
-            return handler.playAlbum(matcher[1].str());
+            return handler.playAlbum(matcher[2].str(), matcher[1] == "shuffle");
 
         if (std::regex_search(command, matcher, playArtist))
-            return handler.playArtist(matcher[1].str());
+            return handler.playArtist(matcher[2].str(), matcher[1] == "shuffle");
 
         if (std::regex_search(command, matcher, playPlaylist))
-            return handler.playPlaylist(matcher[1].str());
+            return handler.playPlaylist(matcher[2].str(), matcher[1] == "shuffle");
 
         if (std::regex_search(command, matcher, playSongFromBy))
             return handler.playTrackFromBy(matcher[1].str(), matcher[2].str(), matcher[3].str());

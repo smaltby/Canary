@@ -15,7 +15,9 @@ import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
@@ -178,6 +180,18 @@ public class MainActivity extends Activity
     public void speak(String text)
     {
         mTextToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+    }
+
+    public void clearEditText(View view)
+    {
+        ((EditText)view).setText("");
+    }
+
+    public void runCommand(View view)
+    {
+        CharSequence command = ((TextView)findViewById(R.id.command_text)).getText();
+        String result = parse(command.toString(), mAccessToken);
+        mHandler.handleInput(result);
     }
 
     private static class IncomingHandler extends Handler

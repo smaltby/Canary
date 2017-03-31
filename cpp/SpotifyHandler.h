@@ -17,13 +17,13 @@ public:
 
     std::string playTrack(std::string song);
 
-    std::string playAlbumBy(std::string album, std::string artist);
+    std::string playAlbumBy(std::string album, std::string artist, bool shuffle);
 
-    std::string playAlbum(std::string album);
+    std::string playAlbum(std::string album, bool shuffle);
 
-    std::string playArtist(std::string artist);
+    std::string playArtist(std::string artist, bool shuffle);
 
-    std::string playPlaylist(std::string playlist);
+    std::string playPlaylist(std::string playlist, bool shuffle);
 
     std::string pause();
 
