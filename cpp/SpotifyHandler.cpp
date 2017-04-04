@@ -40,7 +40,7 @@ std::string SpotifyHandler::playTrack(std::string song)
 
 std::string SpotifyHandler::playAlbumBy(std::string album, std::string artist, bool shuffle)
 {
-    Pager<AlbumSimple> albums = api.SearchAlbums("album:"+album+" artist"+artist);
+    Pager<AlbumSimple> albums = api.SearchAlbums("album:"+album+" artist:"+artist);
     if(albums.GetTotal() > 0)
         return "playuri " + albums.GetItems()[0].GetUri() + " " + (shuffle ? "true" : "false");
     return "error no results found";

@@ -52,7 +52,8 @@ public class SpotifyHandler implements SpotifyPlayer.NotificationCallback, Conne
         switch (commands[0])
         {
             case "playuri":
-                toggleShuffle(commands[2].equals("true"));
+                if(commands.length > 2 && commands[2].equals("true"))
+                    toggleShuffle(true);
                 playUri(commands[1]);
                 break;
             case "pause":

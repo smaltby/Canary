@@ -6,7 +6,6 @@
 CommandParser::CommandParser()
 {
     playAlbumBy = std::regex("^(play|shuffle) album (.+) by (.+)$");
-    playAlbumBy = std::regex("^(play|shuffle) album (.+) by (.+)$");
     playAlbum = std::regex("^(play|shuffle) album (.+)$");
 
     playArtist = std::regex("^(play|shuffle) artist (.+)$");
