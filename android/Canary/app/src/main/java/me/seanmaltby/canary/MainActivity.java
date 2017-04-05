@@ -27,6 +27,7 @@ import com.spotify.sdk.android.player.Spotify;
 import com.spotify.sdk.android.player.SpotifyPlayer;
 
 import java.lang.ref.WeakReference;
+import java.security.Key;
 import java.util.List;
 import java.util.Locale;
 
@@ -37,23 +38,43 @@ public class MainActivity extends Activity
     private static final String TAG = "MainActivity";
 
     static final int MSG_VOICE_INPUT = 1;
+    static final int MSG_KEYWORD_DETECTED = 2;
     static final int MSG_ERROR_ON_INPUT = 3;
+    static final int MSG_TIMED_OUT = 4;
 
     private Messenger mActivityMessenger = new Messenger(new IncomingHandler(this));
+    private Messenger mKeywordDetectionMessenger;
     private Messenger mSpeechRecognitionMessenger;
+    private final ServiceConnection mKeywordDetectionConnection = new ServiceConnection()
+    {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service)
+        {
+            Log.d(TAG, "onServiceConnected KeywordDetectionService");
+            mKeywordDetectionMessenger = new Messenger(service);
+            startKeywordDetection();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name)
+        {
+            Log.d(TAG, "onServiceDisconnected KeywordDetectionService");
+            mKeywordDetectionMessenger = null;
+        }
+    };
     private final ServiceConnection mSpeechRecognitionConnection = new ServiceConnection()
     {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service)
         {
-            Log.d(TAG, "onServiceConnected");
+            Log.d(TAG, "onServiceConnected SpeechRecognitionService");
             mSpeechRecognitionMessenger = new Messenger(service);
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name)
         {
-            Log.d(TAG, "onServiceDisconnected");
+            Log.d(TAG, "onServiceDisconnected SpeechRecognitionService");
             mSpeechRecognitionMessenger = null;
         }
     };
@@ -143,6 +164,7 @@ public class MainActivity extends Activity
     {
         mHandler = new SpotifyHandler(this, player);
 
+        bindService(new Intent(this, KeywordDetectionService.class), mKeywordDetectionConnection, Context.BIND_AUTO_CREATE);
         bindService(new Intent(this, SpeechRecognitionService.class), mSpeechRecognitionConnection, Context.BIND_AUTO_CREATE);
         Log.d(TAG, "Binded services");
     }
@@ -162,11 +184,29 @@ public class MainActivity extends Activity
 
     public void listen(View view)
     {
+        startSpeechRecognition();
+    }
+
+    private void startSpeechRecognition()
+    {
         Message message = Message.obtain(null, SpeechRecognitionService.MSG_RECOGNIZER_START_LISTENING);
         message.replyTo = mActivityMessenger;
         try
         {
             mSpeechRecognitionMessenger.send(message);
+        } catch (RemoteException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private void startKeywordDetection()
+    {
+        Message message = Message.obtain(null, KeywordDetectionService.MSG_RECOGNIZER_START_LISTENING);
+        message.replyTo = mActivityMessenger;
+        try
+        {
+            mKeywordDetectionMessenger.send(message);
         } catch (RemoteException e)
         {
             e.printStackTrace();
@@ -205,6 +245,10 @@ public class MainActivity extends Activity
 
             switch (msg.what)
             {
+                case MSG_KEYWORD_DETECTED:
+                    Log.d(TAG, "Keyword detected, starting SpeechRecognitionService");
+                    target.startSpeechRecognition();
+                    break;
                 case MSG_VOICE_INPUT:
                     List<String> data = msg.getData().getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                     assert data != null;
@@ -220,12 +264,16 @@ public class MainActivity extends Activity
                             break;
                     }
                     target.mHandler.handleInput(result);
-
+                    target.startKeywordDetection();
                     break;
                 case MSG_ERROR_ON_INPUT:
                     Log.d(TAG, "Error on voice input");
                     String error = msg.getData().getString("error");
                     target.mHandler.handleInput(error);
+                    target.startKeywordDetection();
+                    break;
+                case MSG_TIMED_OUT:
+                    target.startKeywordDetection();
                     break;
             }
         }

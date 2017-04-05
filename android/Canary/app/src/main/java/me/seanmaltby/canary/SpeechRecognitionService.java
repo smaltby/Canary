@@ -107,6 +107,7 @@ public class SpeechRecognitionService extends Service implements RecognitionList
         Log.d(TAG, "onReadyForSpeech");
         mMusicVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, 0);
+
         timeoutHandler.postDelayed(new Runnable()
         {
             @Override
@@ -118,10 +119,19 @@ public class SpeechRecognitionService extends Service implements RecognitionList
                     mSpeechRecognizer.cancel();
                     mIsListening = false;
                     mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, mMusicVolume, 0);
+                    Message message = Message.obtain(null, MainActivity.MSG_TIMED_OUT);
+                    try
+                    {
+                        mActivityMessenger.send(message);
+                    } catch (RemoteException e)
+                    {
+                        e.printStackTrace();
+                    }
                 }
             }
         }, 2000);
     }
+
 
     @Override
     public void onBeginningOfSpeech()

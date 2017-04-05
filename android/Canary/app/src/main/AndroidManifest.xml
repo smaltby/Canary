@@ -20,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".KeywordDetectionService" />
         <service android:name=".SpeechRecognitionService" />
         <!-- Needed for LoginActivity to work -->
         <activity
