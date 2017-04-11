@@ -2,6 +2,7 @@ package me.seanmaltby.canary;
 
 import android.app.Service;
 import android.content.Intent;
+import android.media.audiofx.AcousticEchoCanceler;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -23,11 +24,15 @@ public class KeywordDetectionService extends Service implements RecognitionListe
     static final int MSG_RECOGNIZER_START_LISTENING = 1;
     static final int MSG_RECOGNIZER_CANCEL = 2;
 
-    private SpeechRecognizer mSpeechRecognizer;
+    private SpeechRecognizerNoEcho mSpeechRecognizer;
     private Messenger mActivityMessenger;
     private final Messenger mServiceMessenger = new Messenger(new IncomingHandler(this));
 
     private boolean mIsListening;
+
+    static {
+        System.loadLibrary("pocketsphinx_jni");
+    }
 
     @Override
     public void onCreate()
@@ -38,11 +43,17 @@ public class KeywordDetectionService extends Service implements RecognitionListe
         {
             Assets assets = new Assets(KeywordDetectionService.this);
             File assetsDir = assets.syncAssets();
-            mSpeechRecognizer = SpeechRecognizerSetup.defaultSetup()
-                    .setAcousticModel(new File(assetsDir, "en-us-ptm"))
-                    .setDictionary(new File(assetsDir, "cmudict-en-us.dict"))
-                    .setKeywordThreshold(1e-45f)
-                    .getRecognizer();
+
+            Config config = Decoder.defaultConfig();
+            config.setString("-hmm", new File(assetsDir, "en-us-ptm").getPath());
+            config.setString("-dict", new File(assetsDir, "cmudict-en-us.dict").getPath());
+            config.setFloat("-kws_threshold", (double) 1e-40f);
+            mSpeechRecognizer = new SpeechRecognizerNoEcho(config);
+//            mSpeechRecognizer = SpeechRecognizerSetup.defaultSetup()
+//                    .setAcousticModel(new File(assetsDir, "en-us-ptm"))
+//                    .setDictionary(new File(assetsDir, "cmudict-en-us.dict"))
+//                    .setKeywordThreshold(1e-30f)
+//                    .getRecognizer();
         } catch (IOException e)
         {
             e.printStackTrace();

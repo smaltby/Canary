@@ -27,7 +27,6 @@ import com.spotify.sdk.android.player.Spotify;
 import com.spotify.sdk.android.player.SpotifyPlayer;
 
 import java.lang.ref.WeakReference;
-import java.security.Key;
 import java.util.List;
 import java.util.Locale;
 
