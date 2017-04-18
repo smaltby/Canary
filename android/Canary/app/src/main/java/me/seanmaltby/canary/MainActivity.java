@@ -178,21 +178,15 @@ public class MainActivity extends Activity
         new DownloadImageTask((ImageView) findViewById(R.id.album_art)).execute(albumCoverUrl);
     }
 
+    public void updateSong(String songName, String artistName)
+    {
+        ((TextView) findViewById(R.id.song)).setText(songName);
+        ((TextView) findViewById(R.id.artist)).setText(artistName);
+    }
+
     public void speak(String text)
     {
         mTextToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-    }
-
-    public void clearEditText(View view)
-    {
-        ((EditText)view).setText("");
-    }
-
-    public void runCommand(View view)
-    {
-        CharSequence command = ((TextView)findViewById(R.id.command_text)).getText();
-        String result = parse(command.toString(), mAccessToken);
-        mHandler.handleInput(result);
     }
 
     private static class IncomingHandler extends Handler

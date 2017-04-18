@@ -99,6 +99,31 @@ public class SpeechRecognitionService extends Service implements RecognitionList
     }
 
     @Override
+    public void onReadyForSpeech(Bundle params)
+    {
+        if(mIsListening)
+            return;
+        mIsListening = true;
+        Log.d(TAG, "onReadyForSpeech");
+        mMusicVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, 0);
+        timeoutHandler.postDelayed(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                if(mIsListening)
+                {
+                    Log.d(TAG, "SpeechRecognizer timed out");
+                    mSpeechRecognizer.cancel();
+                    mIsListening = false;
+                    mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, mMusicVolume, 0);
+                }
+            }
+        }, 2000);
+    }
+
+    @Override
     public void onBeginningOfSpeech()
     {
         Log.d(TAG, "onBeginingOfSpeech");
@@ -148,32 +173,6 @@ public class SpeechRecognitionService extends Service implements RecognitionList
     public void onPartialResults(Bundle partialResults)
     {
 
-    }
-
-    @Override
-    public void onReadyForSpeech(Bundle params)
-    {
-        if(mIsListening)
-            return;
-        mIsListening = true;
-        Log.d(TAG, "onReadyForSpeech");
-        mMusicVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-        mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, 0);
-
-        timeoutHandler.postDelayed(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                if(mIsListening)
-                {
-                    Log.d(TAG, "SpeechRecognizer timed out");
-                    mSpeechRecognizer.cancel();
-                    mIsListening = false;
-                    mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, mMusicVolume, 0);
-                }
-            }
-        }, 2000);
     }
 
     @Override

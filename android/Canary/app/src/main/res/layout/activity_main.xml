@@ -44,24 +44,22 @@
         android:text="Repeat: False"
         android:layout_alignParentEnd="true"/>
 
-    <EditText
-        android:id="@+id/command_text"
+    <TextView
+        android:id="@+id/song"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/repeat"
+        android:layout_below="@+id/album_art"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
         android:textColor="@android:color/white"
-        android:onClick="clearEditText"
-        android:text="Command"/>
+        android:text=""/>
 
-    <Button
-        android:id="@+id/command_button"
+    <TextView
+        android:id="@+id/artist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/command_text"
-        android:layout_below="@+id/command_text"
-        android:onClick="runCommand"
-        android:text="Button"/>
+        android:layout_below="@+id/song"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:text=""/>
 
 </RelativeLayout>

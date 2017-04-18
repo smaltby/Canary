@@ -158,6 +158,7 @@ public class SpotifyHandler implements SpotifyPlayer.NotificationCallback, Conne
             case kSpPlaybackNotifyTrackChanged:
                 Log.d(TAG, "Track changed, updating album cover");
                 mActivity.updateAlbumCover(mPlayer.getMetadata().currentTrack.albumCoverWebUrl);
+                mActivity.updateSong(mPlayer.getMetadata().currentTrack.name, mPlayer.getMetadata().currentTrack.artistName);
                 mActivity.speak("Playing " + mPlayer.getMetadata().currentTrack.name + " by " + mPlayer.getMetadata().currentTrack.artistName);
                 break;
             case kSpPlaybackNotifyShuffleOn:
