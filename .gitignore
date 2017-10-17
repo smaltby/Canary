@@ -74,7 +74,6 @@ gen-external-apklibs
 *.pch
 
 # Compiled Dynamic libraries
-*.dylib
 *.dll
 
 # Fortran module files
