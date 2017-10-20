@@ -282,3 +282,4 @@ gradle-app.setting
 
 .DS_Store
 keystore.properties
+*.so
