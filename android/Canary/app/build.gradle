@@ -1,8 +1,17 @@
 apply plugin: 'com.android.application'
 
 def keystorePropertiesFile = rootProject.file("keystore.properties")
+keystorePropertiesFile.exists()
+
 def keystoreProperties = new Properties()
-keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+if(keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+} else {
+    keystoreProperties.setProperty('keyAlias', '')
+    keystoreProperties.setProperty('keyPassword', '')
+    keystoreProperties.setProperty('storeFile', ' ')
+    keystoreProperties.setProperty('storePassword', '')
+}
 
 android {
     signingConfigs {
