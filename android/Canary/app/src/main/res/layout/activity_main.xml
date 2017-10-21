@@ -41,6 +41,7 @@
         android:ems="5"
         android:textColor="@android:color/white"
         android:text="Settings"
+        android:onClick="Open_Settings"
         android:layout_marginTop="29dp"
         android:layout_below="@+id/shuffle"
         android:layout_centerHorizontal="true" />

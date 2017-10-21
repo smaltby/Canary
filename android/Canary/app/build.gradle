@@ -71,6 +71,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     compile 'com.spotify.sdk:spotify-auth-beta23-noconnect-2.20b@aar'
     compile 'com.spotify.sdk:spotify-player-beta23-noconnect-2.20b@aar'
+    compile 'com.android.support:preference-v7:23.4.0'
     // uncomment out this one to generate lib binaries,
     // and also uncommented out the one in settings.gradle
     // after lib is generated, just comment them out again

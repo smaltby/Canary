@@ -18,7 +18,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.support.v7.preference.PreferenceFragmentCompat;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
@@ -138,6 +138,9 @@ public class MainActivity extends Activity
             }
         }
     }
+
+
+    
 
     private void initialize(SpotifyPlayer player)
     {
