@@ -20,9 +20,9 @@
         android:adjustViewBounds="false"
         android:cropToPadding="false"
         app:srcCompat="@android:color/background_dark"
+        android:onClick="listen"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="listen" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/shuffle"
@@ -33,6 +33,17 @@
         android:ems="5"
         android:textColor="@android:color/white"
         android:text="Shuffle: False" />
+
+    <TextView
+        android:id="@+id/settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="5"
+        android:textColor="@android:color/white"
+        android:text="Settings"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/shuffle"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/repeat"
