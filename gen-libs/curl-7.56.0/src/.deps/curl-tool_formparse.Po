@@ -1,0 +1,313 @@
+curl-tool_formparse.o: tool_formparse.c tool_setup.h ../lib/curl_setup.h \
+ ../lib/curl_config.h ../include/curl/curl.h ../include/curl/curlver.h \
+ ../include/curl/system.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/types.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/lib/gcc/x86_64-linux-android/4.9.x/include/stddef.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/lib/gcc/x86_64-linux-android/4.9.x/include/stdint.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/local/include/stdint.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/stdint.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/machine/wchar_limits.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/cdefs.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/cdefs_elf.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/android/api-level.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/types.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/types.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/types.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/int-ll64.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/bitsperlong.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/bitsperlong.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/posix_types.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/stddef.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/compiler.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/posix_types.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/posix_types_64.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/posix_types.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/sysmacros.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/socket.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/socket.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/fcntl.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/fcntl.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/socket.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/socket.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/sockios.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/sockios.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/sockios.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/uio.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/local/include/stdio.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/stdio.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/lib/gcc/x86_64-linux-android/4.9.x/include/stdarg.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/lib/gcc/x86_64-linux-android/4.9.x/include-fixed/limits.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/lib/gcc/x86_64-linux-android/4.9.x/include-fixed/syslimits.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/limits.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/limits.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/limits.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/syslimits.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/local/include/time.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/time.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/time.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/time.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/local/include/xlocale.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/xlocale.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/select.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/signal.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/local/include/errno.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/errno.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/errno.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/errno.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/errno.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/errno-base.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/local/include/string.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/string.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/malloc.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/sigcontext.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/signal.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/signal.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/signal-defs.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/siginfo.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/siginfo.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/ucontext.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/user.h \
+ ../include/curl/easy.h ../include/curl/multi.h ../include/curl/curl.h \
+ ../include/curl/typecheck-gcc.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/assert.h \
+ ../lib/curl_setup_once.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/local/include/stdlib.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/stdlib.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/alloca.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/strings.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/memory.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/local/include/ctype.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/ctype.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/stat.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/stat.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/endian.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/endian.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/lib/gcc/x86_64-linux-android/4.9.x/include/stdbool.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/unistd.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/sysconf.h \
+ /home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/pathconf.h \
+ ../lib/mime.h ../lib/strcase.h ../lib/curlx.h ../include/curl/mprintf.h \
+ ../lib/strcase.h ../lib/strtoofft.h ../lib/curl_setup.h ../lib/timeval.h \
+ ../lib/nonblock.h ../lib/warnless.h tool_cfgable.h tool_sdecls.h \
+ tool_metalink.h tool_convert.h tool_msgs.h tool_formparse.h \
+ ../lib/memdebug.h
+
+tool_setup.h:
+
+../lib/curl_setup.h:
+
+../lib/curl_config.h:
+
+../include/curl/curl.h:
+
+../include/curl/curlver.h:
+
+../include/curl/system.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/types.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/lib/gcc/x86_64-linux-android/4.9.x/include/stddef.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/lib/gcc/x86_64-linux-android/4.9.x/include/stdint.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/local/include/stdint.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/stdint.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/machine/wchar_limits.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/cdefs.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/cdefs_elf.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/android/api-level.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/types.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/types.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/types.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/int-ll64.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/bitsperlong.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/bitsperlong.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/posix_types.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/stddef.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/compiler.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/posix_types.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/posix_types_64.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/posix_types.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/sysmacros.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/socket.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/socket.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/fcntl.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/fcntl.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/socket.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/socket.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/sockios.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/sockios.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/sockios.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/uio.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/local/include/stdio.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/stdio.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/lib/gcc/x86_64-linux-android/4.9.x/include/stdarg.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/lib/gcc/x86_64-linux-android/4.9.x/include-fixed/limits.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/lib/gcc/x86_64-linux-android/4.9.x/include-fixed/syslimits.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/limits.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/limits.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/limits.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/syslimits.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/local/include/time.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/time.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/time.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/time.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/local/include/xlocale.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/xlocale.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/select.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/signal.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/local/include/errno.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/errno.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/errno.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/errno.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/errno.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/errno-base.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/local/include/string.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/string.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/malloc.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/sigcontext.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/signal.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/signal.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/signal-defs.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm/siginfo.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/asm-generic/siginfo.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/ucontext.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/user.h:
+
+../include/curl/easy.h:
+
+../include/curl/multi.h:
+
+../include/curl/curl.h:
+
+../include/curl/typecheck-gcc.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/assert.h:
+
+../lib/curl_setup_once.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/local/include/stdlib.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/stdlib.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/alloca.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/strings.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/memory.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/local/include/ctype.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/ctype.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/stat.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/linux/stat.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/endian.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/endian.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/lib/gcc/x86_64-linux-android/4.9.x/include/stdbool.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/unistd.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/sys/sysconf.h:
+
+/home/sean/Canary/gen-libs/x86_64-android-toolchain/sysroot/usr/include/pathconf.h:
+
+../lib/mime.h:
+
+../lib/strcase.h:
+
+../lib/curlx.h:
+
+../include/curl/mprintf.h:
+
+../lib/strcase.h:
+
+../lib/strtoofft.h:
+
+../lib/curl_setup.h:
+
+../lib/timeval.h:
+
+../lib/nonblock.h:
+
+../lib/warnless.h:
+
+tool_cfgable.h:
+
+tool_sdecls.h:
+
+tool_metalink.h:
+
+tool_convert.h:
+
+tool_msgs.h:
+
+tool_formparse.h:
+
+../lib/memdebug.h:

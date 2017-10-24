@@ -18,12 +18,11 @@ set -u
 
 SOURCE="$0"
 while [ -h "$SOURCE" ]; do
-DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-SOURCE="$(readlink "$SOURCE")"
-[[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+	DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+	SOURCE="$(readlink "$SOURCE")"
+	[[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
 done
 pwd_path="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-
 
 # Setup architectures, library name and other vars + cleanup from previous runs
 ARCHS=("arm64" "armv7s" "armv7" "i386" "x86_64")

@@ -1,41 +1,27 @@
 #!/bin/bash
-#
-# Copyright 2016 leenjewel
-# 
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# 
-#     http://www.apache.org/licenses/LICENSE-2.0
-# 
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 
 set -u
 
-source ./_shared.sh cURL
+# android_shared.sh makes it so all of the build tools used are from the appropriate android toolchain
+source ./android_shared.sh
 
-# Setup architectures, library name and other vars + cleanup from previous runs
-TOOLS_ROOT=`pwd`
-LIB_NAME="curl-7.54.1"
-LIB_DEST_DIR=${TOOLS_ROOT}/libs
-[ -f ${LIB_NAME}.tar.gz ] || wget https://curl.haxx.se/download/${LIB_NAME}.tar.gz
-# Unarchive library, then configure and make for specified architectures
+# Specify library name and the destination directory for the generated libraries
+LIB_NAME="curl-7.56.0"
+LIB_DEST_DIR=${TARGET_DIR}/libs
+
 configure_make() {
-  ARCH=$1; ABI=$2;
-  [ -d "${LIB_NAME}" ] && rm -rf "${LIB_NAME}"
-  tar xfz "${LIB_NAME}.tar.gz"
-  pushd "${LIB_NAME}";
+  ABI=$1;
+  pushd "${LIB_NAME}"
 
+  # configure() from the shared bash file sets up the specified architecture from the arguments of this function
   configure $*
-  # fix me
-  cp ${TOOLS_ROOT}/../output/android/openssl-${ABI}/lib/libssl.a ${SYSROOT}/usr/lib
-  cp ${TOOLS_ROOT}/../output/android/openssl-${ABI}/lib/libcrypto.a ${SYSROOT}/usr/lib
-  cp -r ${TOOLS_ROOT}/../output/android/openssl-${ABI}/include/openssl ${SYSROOT}/usr/include
 
+  # Copy openssl libraries and include files to the toolchain sysroot, so curl when find them while being built later
+  cp ${TARGET_DIR}/../output/android/openssl-${ABI}/lib/libssl.a ${SYSROOT}/usr/lib
+  cp ${TARGET_DIR}/../output/android/openssl-${ABI}/lib/libcrypto.a ${SYSROOT}/usr/lib
+  cp -r ${LIB_DEST_DIR}/${ABI}/include/openssl ${SYSROOT}/usr/include
+
+  # Configure cURL for the architecture. Build the library statically, disable unnecessary features
   mkdir -p ${LIB_DEST_DIR}/${ABI}
   ./configure --prefix=${LIB_DEST_DIR}/${ABI} \
               --with-sysroot=${SYSROOT} \
@@ -54,26 +40,29 @@ configure_make() {
               --disable-smb \
               --disable-telnet \
               --disable-verbose
-  PATH=$TOOLCHAIN_PATH:$PATH
+
   make clean
-  if make -j4
-  then
+
+  # make the library, and if the build suceeds, install it
+  if make -j4; then
     make install
 
-    OUTPUT_ROOT=${TOOLS_ROOT}/../output/android/curl-${ABI}
+    # Copy the resulting libraries and include files to $OUTPUT_ROOT
+    OUTPUT_ROOT=${TARGET_DIR}/../android/Canary/distribution/${ABI}
     [ -d ${OUTPUT_ROOT}/include ] || mkdir -p ${OUTPUT_ROOT}/include
     cp -r ${LIB_DEST_DIR}/${ABI}/include/curl ${OUTPUT_ROOT}/include
 
-    [ -d ${OUTPUT_ROOT}/lib ] || mkdir -p ${OUTPUT_ROOT}/lib
-    cp ${LIB_DEST_DIR}/${ABI}/lib/libcurl.a ${OUTPUT_ROOT}/lib
+    [ -d ${OUTPUT_ROOT} ] || mkdir -p ${OUTPUT_ROOT}
+    cp ${LIB_DEST_DIR}/${ABI}/lib/libcurl.a ${OUTPUT_ROOT}
   fi;
   popd;
 }
 
-for ((i=0; i < ${#ARCHS[@]}; i++))
+
+# For each architecture, run configure_make()
+for ((i=0; i < ${#ABIS[@]}; i++))
 do
-  if [[ $# -eq 0 ]] || [[ "$1" == "${ARCHS[i]}" ]]; then
-    [[ ${ANDROID_API} < 21 ]] && ( echo "${ABIS[i]}" | grep 64 > /dev/null ) && continue;
-    configure_make "${ARCHS[i]}" "${ABIS[i]}"
+  if [[ $# -eq 0 ]] || [[ "$1" == "${ABIS[i]}" ]]; then
+    configure_make "${ABIS[i]}"
   fi
 done
