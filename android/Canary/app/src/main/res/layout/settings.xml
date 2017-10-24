@@ -3,6 +3,8 @@
 
     <android.support.v7.preference.PreferenceCategory
         android:title="Category 1">
+        android:layout_width="320dp"
+        android:layout_height="320dp"
 
         <android.support.v7.preference.SwitchPreferenceCompat
             android:key="key1"

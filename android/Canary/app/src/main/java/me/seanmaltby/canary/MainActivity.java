@@ -140,7 +140,7 @@ public class MainActivity extends Activity
     }
 
 
-    
+
 
     private void initialize(SpotifyPlayer player)
     {
@@ -179,6 +179,10 @@ public class MainActivity extends Activity
     public void updateAlbumCover(String albumCoverUrl)
     {
         new DownloadImageTask((ImageView) findViewById(R.id.album_art)).execute(albumCoverUrl);
+    }
+    public void Open_Settings()
+    {
+
     }
 
     public void updateSong(String songName, String artistName)
