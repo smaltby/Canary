@@ -3,7 +3,7 @@
 set -u
 
 # android_shared.sh makes it so all of the build tools used are from the appropriate android toolchain
-source ./android_shared.sh
+source ./android_shared.sh gcc
 
 # Specify library name and the destination directory for the generated libraries
 LIB_NAME="openssl-1.1.0f"
@@ -14,7 +14,7 @@ configure_make() {
   pushd "${LIB_NAME}"
 
   # configure() from the shared bash file sets up the specified architecture from the arguments of this function
-  configure $*
+  configure $* gcc
 
   # Configure openssl for the architecture. Build the library statically, and find zlib from the toolchain sysroot
   ./Configure $ARCH \

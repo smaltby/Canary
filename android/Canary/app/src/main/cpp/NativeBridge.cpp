@@ -1,6 +1,6 @@
 #include <CommandParser.h>
 #include <jni.h>
-#include <SpotifyAPI.h>
+#include <spotify-api-plusplus/SpotifyAPI.h>
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_me_seanmaltby_canary_MainActivity_parse(JNIEnv *env, jobject thiz, jstring javaCommand, jstring javaAccessToken)

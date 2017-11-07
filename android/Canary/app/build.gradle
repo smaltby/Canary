@@ -37,7 +37,7 @@ android {
         externalNativeBuild {
             cmake {
                 arguments '-DANDROID_PLATFORM=android-21',
-                        '-DANDROID_TOOLCHAIN=clang', '-DANDROID_STL=c++_static'
+                        '-DANDROID_TOOLCHAIN=clang', '-DANDROID_STL=c++_shared'
                 cppFlags "-std=c++11 -frtti -fexceptions"
             }
         }
@@ -80,8 +80,4 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     compile 'com.spotify.sdk:spotify-auth-beta23-noconnect-2.20b@aar'
     compile 'com.spotify.sdk:spotify-player-beta23-noconnect-2.20b@aar'
-    // uncomment out this one to generate lib binaries,
-    // and also uncommented out the one in settings.gradle
-    // after lib is generated, just comment them out again
-    // compile project(':gen-libs')
 }

@@ -2,7 +2,7 @@
 #define CANARY_SPOTIFYHANDLER_H
 
 #include <string>
-#include <SpotifyAPI.h>
+#include <spotify-api-plusplus/SpotifyAPI.h>
 
 class SpotifyHandler
 {

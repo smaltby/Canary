@@ -15,7 +15,7 @@ ARCHS=("android64-aarch64" "android" "android-armeabi" "android-x86" "android64"
 eval NDK=${ANDROID_NDK}
 
 configure() {
-  ABI=$1;
+  ABI=$1; GCC=${2:-""};
 
   # The root directory of the toolchain
   TOOLCHAIN_ROOT=${TARGET_DIR}/${ABI}-android-toolchain
@@ -60,8 +60,15 @@ configure() {
   export NDK_TOOLCHAIN_BASENAME=${TOOLCHAIN_PATH}/${TOOL}
   export SYSROOT=${TOOLCHAIN_ROOT}/sysroot
   export CROSS_SYSROOT=$SYSROOT
-  export CC=${NDK_TOOLCHAIN_BASENAME}-gcc
-  export CXX=${NDK_TOOLCHAIN_BASENAME}-g++
+  if [ -z ${GCC} ]; then
+    echo "CLANGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG"
+    export CC=${TOOLCHAIN_PATH}/clang
+    export CXX=${TOOLCHAIN_PATH}/clang++
+  else
+    echo "GCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
+    export CC=${NDK_TOOLCHAIN_BASENAME}-gcc
+    export CXX=${NDK_TOOLCHAIN_BASENAME}-g++
+  fi;
   export LINK=${CXX}
   export LD=${NDK_TOOLCHAIN_BASENAME}-ld
   export AR=${NDK_TOOLCHAIN_BASENAME}-ar
@@ -69,7 +76,7 @@ configure() {
   export STRIP=${NDK_TOOLCHAIN_BASENAME}-strip
   export CPPFLAGS=${CPPFLAGS:-""}
   export LIBS=${LIBS:-""}
-  export CFLAGS="${ARCH_CFLAGS} -fpic -ffunction-sections -funwind-tables -fstack-protector -fno-strict-aliasing -finline-limit=64"
+  export CFLAGS="${ARCH_CFLAGS} -fpic -ffunction-sections -funwind-tables -fstack-protector -fno-strict-aliasing"
   export CXXFLAGS="${CFLAGS} -std=c++11 -frtti -fexceptions"
   export LDFLAGS="${ARCH_LDFLAGS}"
   echo "**********************************************"
