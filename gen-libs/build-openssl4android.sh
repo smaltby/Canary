@@ -6,7 +6,7 @@ set -u
 source ./android_shared.sh gcc
 
 # Specify library name and the destination directory for the generated libraries
-LIB_NAME="openssl-1.1.0f"
+LIB_NAME="openssl-1.1.0g"
 LIB_DEST_DIR=${TARGET_DIR}/libs
 
 configure_make() {

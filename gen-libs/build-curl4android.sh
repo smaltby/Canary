@@ -6,7 +6,7 @@ set -u
 source ./android_shared.sh
 
 # Specify library name and the destination directory for the generated libraries
-LIB_NAME="curl-7.56.0"
+LIB_NAME="curl-7.56.1"
 LIB_DEST_DIR=${TARGET_DIR}/libs
 
 configure_make() {
