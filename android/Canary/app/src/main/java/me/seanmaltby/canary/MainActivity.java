@@ -180,8 +180,9 @@ public class MainActivity extends Activity
     {
         new DownloadImageTask((ImageView) findViewById(R.id.album_art)).execute(albumCoverUrl);
     }
-    public void Open_Settings()
+    public void Open_Settings(View view)
     {
+        Log.d(TAG, "hey");
 
     }
 
