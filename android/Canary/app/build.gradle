@@ -22,13 +22,13 @@ android {
             storePassword keystoreProperties['storePassword']
         }
     }
-    compileSdkVersion = 25
-    buildToolsVersion = '25.0.2'
+    compileSdkVersion = 27
+    buildToolsVersion = '27.0.1'
 
     defaultConfig {
         applicationId = 'me.seanmaltby.canary'
         minSdkVersion 21
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode = 1
         versionName = '1.0'
         ndk {
@@ -72,12 +72,14 @@ repositories {
     flatDir {
         dirs 'libs'
     }
+    google()
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
-    compile 'com.spotify.sdk:spotify-auth-beta23-noconnect-2.20b@aar'
-    compile 'com.spotify.sdk:spotify-player-beta23-noconnect-2.20b@aar'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.spotify.sdk:spotify-auth-beta23-noconnect-2.20b@aar'
+    implementation 'com.spotify.sdk:spotify-player-beta23-noconnect-2.20b@aar'
+    implementation 'org.webrtc:google-webrtc:1.0.+'
 }
