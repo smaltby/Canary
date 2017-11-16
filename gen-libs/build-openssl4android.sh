@@ -3,20 +3,26 @@
 set -u
 
 # android_shared.sh makes it so all of the build tools used are from the appropriate android toolchain
-source ./android_shared.sh gcc
+source ./android_shared.sh
 
 # Specify library name and the destination directory for the generated libraries
-LIB_NAME="openssl-1.1.0g"
+LIB_NAME="openssl-1.0.2m"
 LIB_DEST_DIR=${TARGET_DIR}/libs
 
 configure_make() {
-  ABI=$1; ARCH=$2;
+  ABI=$1
   pushd "${LIB_NAME}"
 
   # configure() from the shared bash file sets up the specified architecture from the arguments of this function
-  configure $* gcc
+  configure $*
 
   # Configure openssl for the architecture. Build the library statically, and find zlib from the toolchain sysroot
+  if [[ $ABI == *"64"* ]]; then
+    ARCH=linux-generic64
+  else
+    ARCH=linux-generic32
+  fi
+
   ./Configure $ARCH \
               --prefix=${LIB_DEST_DIR}/${ABI} \
               --with-zlib-include=$SYSROOT/usr/include \
@@ -51,6 +57,6 @@ configure_make() {
 for ((i=0; i < ${#ABIS[@]}; i++))
 do
   if [[ $# -eq 0 ]] || [[ "$1" == "${ABIS[i]}" ]]; then
-    configure_make "${ABIS[i]}" "${ARCHS[i]}"
+    configure_make "${ABIS[i]}"
   fi
 done

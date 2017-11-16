@@ -9,13 +9,10 @@ ANDROID_API=${ANDROID_API:-21}
 # ABIs to build for
 ABIS=("arm64-v8a" "armeabi" "armeabi-v7a" "x86" "x86_64")
 
-# Architectures corresponding to the ABI of the same index. 
-ARCHS=("android64-aarch64" "android" "android-armeabi" "android-x86" "android64")
-
 eval NDK=${ANDROID_NDK}
 
 configure() {
-  ABI=$1; GCC=${2:-""};
+  ABI=$1;
 
   # The root directory of the toolchain
   TOOLCHAIN_ROOT=${TARGET_DIR}/${ABI}-android-toolchain
@@ -53,22 +50,14 @@ configure() {
                                      --api ${ANDROID_API} \
                                      --stl libc++ \
                                      --install-dir=${TOOLCHAIN_ROOT} \
-                                     --deprecated-headers \
                                      $NDK_FLAGS
 
   export TOOLCHAIN_PATH=${TOOLCHAIN_ROOT}/bin
   export NDK_TOOLCHAIN_BASENAME=${TOOLCHAIN_PATH}/${TOOL}
   export SYSROOT=${TOOLCHAIN_ROOT}/sysroot
   export CROSS_SYSROOT=$SYSROOT
-  if [ -z ${GCC} ]; then
-    echo "CLANGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG"
-    export CC=${TOOLCHAIN_PATH}/clang
-    export CXX=${TOOLCHAIN_PATH}/clang++
-  else
-    echo "GCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
-    export CC=${NDK_TOOLCHAIN_BASENAME}-gcc
-    export CXX=${NDK_TOOLCHAIN_BASENAME}-g++
-  fi;
+  export CC=${TOOLCHAIN_PATH}/clang
+  export CXX=${TOOLCHAIN_PATH}/clang++
   export LINK=${CXX}
   export LD=${NDK_TOOLCHAIN_BASENAME}-ld
   export AR=${NDK_TOOLCHAIN_BASENAME}-ar

@@ -17,8 +17,8 @@ configure_make() {
   configure $*
 
   # Copy openssl libraries and include files to the toolchain sysroot, so curl when find them while being built later
-  cp ${TARGET_DIR}/../output/android/openssl-${ABI}/lib/libssl.a ${SYSROOT}/usr/lib
-  cp ${TARGET_DIR}/../output/android/openssl-${ABI}/lib/libcrypto.a ${SYSROOT}/usr/lib
+  cp ${LIB_DEST_DIR}/${ABI}/lib/libssl.a ${SYSROOT}/usr/lib
+  cp ${LIB_DEST_DIR}/${ABI}/lib/libcrypto.a ${SYSROOT}/usr/lib
   cp -r ${LIB_DEST_DIR}/${ABI}/include/openssl ${SYSROOT}/usr/include
 
   # Configure cURL for the architecture. Build the library statically, disable unnecessary features

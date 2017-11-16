@@ -77,11 +77,10 @@ repositories {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:27.0.0'
+    implementation 'com.android.support:appcompat-v7:27.0.1'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.spotify.sdk:spotify-auth-beta23-noconnect-2.20b@aar'
     implementation 'com.spotify.sdk:spotify-player-beta23-noconnect-2.20b@aar'
-    implementation 'org.webrtc:google-webrtc:1.0.+'
     implementation project(':models')
     implementation 'edu.cmu.pocketsphinx:pocketsphinx-android-5prealpha-release@aar'
 }
