@@ -24,7 +24,7 @@ public class KeywordDetectionService extends Service implements RecognitionListe
     static final int MSG_RECOGNIZER_START_LISTENING = 1;
     static final int MSG_RECOGNIZER_CANCEL = 2;
 
-    private SpeechRecognizerNoEcho mSpeechRecognizer;
+    private SpeechRecognizer mSpeechRecognizer;
     private Messenger mActivityMessenger;
     private final Messenger mServiceMessenger = new Messenger(new IncomingHandler(this));
 
@@ -48,12 +48,11 @@ public class KeywordDetectionService extends Service implements RecognitionListe
             config.setString("-hmm", new File(assetsDir, "en-us-ptm").getPath());
             config.setString("-dict", new File(assetsDir, "cmudict-en-us.dict").getPath());
             config.setFloat("-kws_threshold", (double) 1e-40f);
-            mSpeechRecognizer = new SpeechRecognizerNoEcho(config);
-//            mSpeechRecognizer = SpeechRecognizerSetup.defaultSetup()
-//                    .setAcousticModel(new File(assetsDir, "en-us-ptm"))
-//                    .setDictionary(new File(assetsDir, "cmudict-en-us.dict"))
-//                    .setKeywordThreshold(1e-30f)
-//                    .getRecognizer();
+            mSpeechRecognizer = SpeechRecognizerSetup.defaultSetup()
+                    .setAcousticModel(new File(assetsDir, "en-us-ptm"))
+                    .setDictionary(new File(assetsDir, "cmudict-en-us.dict"))
+                    .setKeywordThreshold(1e-30f)
+                    .getRecognizer();
         } catch (IOException e)
         {
             e.printStackTrace();
