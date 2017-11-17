@@ -41,16 +41,30 @@ class NativeFunctions: NSObject
     
     static func next()
     {
-        
+        print("Attempting to play next song in the queue")
+        SPTAudioStreamingController.sharedInstance().skipNext(){
+            error in if error != nil
+            {
+                print("Failed to play: \(error)")
+                return
+            }
+        }
     }
     
     static func toggleShuffle(_ shuffle: Bool)
     {
-        
+        print("Attempting to toggle shuffle")
+        SPTAudioStreamingController.sharedInstance().setShuffle(!shuffle){
+            error in if error != nil
+            {
+                print("Failed to toggle shuffle: \(error)")
+                return
+            }
+        }
     }
     
     static func toggleRepeat(_ repeat: Bool)
     {
-        
+    
     }
 }
