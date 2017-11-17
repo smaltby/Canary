@@ -15,12 +15,28 @@ class NativeFunctions: NSObject
     
     static func pause()
     {
-        
+        print("Attempting to pause... ")
+        SPTAudioStreamingController.sharedInstance().setIsPlaying(false)
+        {
+            error in if error != nil
+            {
+                print("Failed to play: \(error)")
+                return
+            }
+        }
     }
     
     static func resume()
     {
-        
+        print("Attempting to resume... ")
+        SPTAudioStreamingController.sharedInstance().setIsPlaying(true)
+        {
+            error in if error != nil
+            {
+                print("Failed to play: \(error)")
+                return
+            }
+        }
     }
     
     static func next()
