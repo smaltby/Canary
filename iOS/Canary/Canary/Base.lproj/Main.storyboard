@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kFq-H3-jJa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kFq-H3-jJa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,14 +22,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="350" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Canary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7J-KS-kVo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7J-KS-kVo">
                                 <rect key="frame" x="100" y="84" width="150" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="44"/>
                                 <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BFZ-NW-yIg" customClass="SPTConnectButton">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFZ-NW-yIg" customClass="SPTConnectButton">
                                 <rect key="frame" x="42" y="466" width="266" height="46"/>
                                 <color key="backgroundColor" red="0.62807674229999999" green="1" blue="0.59483990919999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.62807674229999999" green="1" blue="0.59483990919999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -40,14 +40,14 @@
                                     <action selector="loginButtonWasPressed:" destination="OLw-yI-dNh" eventType="touchUpInside" id="7Ed-Aj-dde"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Status text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhA-6z-xP9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhA-6z-xP9">
                                 <rect key="frame" x="138" y="440" width="74" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIl-An-had">
-                                <rect key="frame" x="94" y="558" width="163" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIl-An-had">
+                                <rect key="frame" x="94" y="553" width="162" height="30"/>
                                 <state key="normal" title="Show Spotify App Store">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -55,8 +55,8 @@
                                     <action selector="showSpotifyAppStoreClicked:" destination="OLw-yI-dNh" eventType="touchUpInside" id="amw-8k-5H7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDE-kB-UEX">
-                                <rect key="frame" x="80" y="520" width="191" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDE-kB-UEX">
+                                <rect key="frame" x="80" y="520" width="190" height="30"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                 <state key="normal" title="Clear cookies in UIWebView">
                                     <color key="titleColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -70,7 +70,19 @@
                         <constraints>
                             <constraint firstItem="ZDE-kB-UEX" firstAttribute="top" secondItem="BFZ-NW-yIg" secondAttribute="bottom" constant="8" id="ApS-RE-iUA"/>
                             <constraint firstItem="BFZ-NW-yIg" firstAttribute="top" secondItem="WhA-6z-xP9" secondAttribute="bottom" constant="8" id="JOO-Hf-b8N"/>
+                            <constraint firstItem="y7J-KS-kVo" firstAttribute="leading" secondItem="GGB-t1-bV2" secondAttribute="leadingMargin" constant="84" id="VEN-JE-rq1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HIl-An-had" secondAttribute="trailing" constant="78" id="WJK-si-Wja"/>
+                            <constraint firstItem="BFZ-NW-yIg" firstAttribute="leading" secondItem="GGB-t1-bV2" secondAttribute="leadingMargin" constant="26" id="dUu-3x-Jq5"/>
+                            <constraint firstItem="WhA-6z-xP9" firstAttribute="leading" secondItem="GGB-t1-bV2" secondAttribute="leadingMargin" constant="122" id="hJU-k9-AwE"/>
+                            <constraint firstItem="WhA-6z-xP9" firstAttribute="top" secondItem="y7J-KS-kVo" secondAttribute="bottom" constant="303" id="hUL-PF-D4v"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="y7J-KS-kVo" secondAttribute="trailing" constant="84" id="j0k-sv-aNp"/>
+                            <constraint firstItem="HIl-An-had" firstAttribute="leading" secondItem="GGB-t1-bV2" secondAttribute="leadingMargin" constant="78" id="kno-Ft-DZD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZDE-kB-UEX" secondAttribute="trailing" constant="64" id="qvP-m3-uxz"/>
+                            <constraint firstItem="y7J-KS-kVo" firstAttribute="top" secondItem="FOk-lR-D5M" secondAttribute="bottom" constant="20" id="rJI-w8-8gA"/>
+                            <constraint firstItem="ZDE-kB-UEX" firstAttribute="leading" secondItem="GGB-t1-bV2" secondAttribute="leadingMargin" constant="64" id="rfg-26-bk6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WhA-6z-xP9" secondAttribute="trailing" constant="1222" id="s3n-Dj-5RQ"/>
                             <constraint firstItem="HIl-An-had" firstAttribute="top" secondItem="ZDE-kB-UEX" secondAttribute="bottom" constant="3" id="vLz-Wg-QTu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BFZ-NW-yIg" secondAttribute="trailing" constant="26" id="zbz-Me-zRe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4a3-O1-Kk5"/>
@@ -91,7 +103,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kFq-H3-jJa" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="idE-ND-BAN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -112,7 +124,7 @@
                         <viewControllerLayoutGuide type="bottom" id="6DR-a5-xVY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yrP-SZ-xLK">
-                        <rect key="frame" x="0.0" y="0.0" width="350" height="700"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Command" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Q2-cW-2Qa">
