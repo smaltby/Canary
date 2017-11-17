@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kFq-H3-jJa">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,67 +23,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="350" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7J-KS-kVo">
-                                <rect key="frame" x="100" y="84" width="150" height="53"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7J-KS-kVo">
+                                <rect key="frame" x="100" y="84" width="150" height="52.666666666666657"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="y7J-KS-kVo" secondAttribute="height" multiplier="150:53" id="GzJ-dp-sja"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="44"/>
                                 <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFZ-NW-yIg" customClass="SPTConnectButton">
-                                <rect key="frame" x="42" y="466" width="266" height="46"/>
-                                <color key="backgroundColor" red="0.62807674229999999" green="1" blue="0.59483990919999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" red="0.62807674229999999" green="1" blue="0.59483990919999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="266" id="BF3-hO-nlf"/>
-                                    <constraint firstAttribute="height" constant="46" id="mfd-dP-yZa"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="loginButtonWasPressed:" destination="OLw-yI-dNh" eventType="touchUpInside" id="7Ed-Aj-dde"/>
-                                </connections>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhA-6z-xP9">
-                                <rect key="frame" x="138" y="440" width="74" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIl-An-had">
-                                <rect key="frame" x="94" y="553" width="162" height="30"/>
-                                <state key="normal" title="Show Spotify App Store">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="showSpotifyAppStoreClicked:" destination="OLw-yI-dNh" eventType="touchUpInside" id="amw-8k-5H7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDE-kB-UEX">
-                                <rect key="frame" x="80" y="520" width="190" height="30"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                <state key="normal" title="Clear cookies in UIWebView">
-                                    <color key="titleColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="clearCookiesClicked:" destination="OLw-yI-dNh" eventType="touchUpInside" id="3UG-d0-CWu"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="O1V-Sl-6Ot">
+                                <rect key="frame" x="42" y="471" width="266" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Status text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhA-6z-xP9">
+                                        <rect key="frame" x="96" y="0.0" width="74" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BFZ-NW-yIg" customClass="SPTConnectButton">
+                                        <rect key="frame" x="0.0" y="18" width="266" height="50"/>
+                                        <color key="backgroundColor" red="0.62807674229999999" green="1" blue="0.59483990919999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.62807674229999999" green="1" blue="0.59483990919999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="loginButtonWasPressed:" destination="OLw-yI-dNh" eventType="touchUpInside" id="7Ed-Aj-dde"/>
+                                        </connections>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDE-kB-UEX">
+                                        <rect key="frame" x="37.666666666666686" y="68" width="191" height="30"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                        <state key="normal" title="Clear cookies in UIWebView">
+                                            <color key="titleColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clearCookiesClicked:" destination="OLw-yI-dNh" eventType="touchUpInside" id="3UG-d0-CWu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIl-An-had">
+                                        <rect key="frame" x="51.666666666666686" y="98" width="163" height="30"/>
+                                        <state key="normal" title="Show Spotify App Store">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showSpotifyAppStoreClicked:" destination="OLw-yI-dNh" eventType="touchUpInside" id="amw-8k-5H7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.066681338029999995" green="0.066681338029999995" blue="0.066681338029999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ZDE-kB-UEX" firstAttribute="top" secondItem="BFZ-NW-yIg" secondAttribute="bottom" constant="8" id="ApS-RE-iUA"/>
-                            <constraint firstItem="BFZ-NW-yIg" firstAttribute="top" secondItem="WhA-6z-xP9" secondAttribute="bottom" constant="8" id="JOO-Hf-b8N"/>
-                            <constraint firstItem="y7J-KS-kVo" firstAttribute="leading" secondItem="GGB-t1-bV2" secondAttribute="leadingMargin" constant="84" id="VEN-JE-rq1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="HIl-An-had" secondAttribute="trailing" constant="78" id="WJK-si-Wja"/>
-                            <constraint firstItem="BFZ-NW-yIg" firstAttribute="leading" secondItem="GGB-t1-bV2" secondAttribute="leadingMargin" constant="26" id="dUu-3x-Jq5"/>
-                            <constraint firstItem="WhA-6z-xP9" firstAttribute="leading" secondItem="GGB-t1-bV2" secondAttribute="leadingMargin" constant="122" id="hJU-k9-AwE"/>
-                            <constraint firstItem="WhA-6z-xP9" firstAttribute="top" secondItem="y7J-KS-kVo" secondAttribute="bottom" constant="303" id="hUL-PF-D4v"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="y7J-KS-kVo" secondAttribute="trailing" constant="84" id="j0k-sv-aNp"/>
-                            <constraint firstItem="HIl-An-had" firstAttribute="leading" secondItem="GGB-t1-bV2" secondAttribute="leadingMargin" constant="78" id="kno-Ft-DZD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ZDE-kB-UEX" secondAttribute="trailing" constant="64" id="qvP-m3-uxz"/>
-                            <constraint firstItem="y7J-KS-kVo" firstAttribute="top" secondItem="FOk-lR-D5M" secondAttribute="bottom" constant="20" id="rJI-w8-8gA"/>
-                            <constraint firstItem="ZDE-kB-UEX" firstAttribute="leading" secondItem="GGB-t1-bV2" secondAttribute="leadingMargin" constant="64" id="rfg-26-bk6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="WhA-6z-xP9" secondAttribute="trailing" constant="1222" id="s3n-Dj-5RQ"/>
-                            <constraint firstItem="HIl-An-had" firstAttribute="top" secondItem="ZDE-kB-UEX" secondAttribute="bottom" constant="3" id="vLz-Wg-QTu"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="BFZ-NW-yIg" secondAttribute="trailing" constant="26" id="zbz-Me-zRe"/>
+                            <constraint firstItem="y7J-KS-kVo" firstAttribute="centerX" secondItem="GGB-t1-bV2" secondAttribute="centerX" id="8nD-p9-opJ"/>
+                            <constraint firstItem="y7J-KS-kVo" firstAttribute="top" secondItem="FOk-lR-D5M" secondAttribute="bottom" constant="20" id="EO4-71-tHh"/>
+                            <constraint firstItem="bAo-Lr-ilC" firstAttribute="top" secondItem="O1V-Sl-6Ot" secondAttribute="bottom" constant="101" id="uy8-h9-UOG"/>
+                            <constraint firstItem="O1V-Sl-6Ot" firstAttribute="centerX" secondItem="GGB-t1-bV2" secondAttribute="centerX" id="z6R-SA-830"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4a3-O1-Kk5"/>
@@ -103,7 +97,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kFq-H3-jJa" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="idE-ND-BAN">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -124,35 +118,53 @@
                         <viewControllerLayoutGuide type="bottom" id="6DR-a5-xVY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yrP-SZ-xLK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Command" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Q2-cW-2Qa">
-                                <rect key="frame" x="91" y="188" width="169" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Command" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Q2-cW-2Qa">
+                                <rect key="frame" x="20" y="174" width="274" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYl-ti-wW6">
-                                <rect key="frame" x="133" y="244" width="85" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYl-ti-wW6">
+                                <rect key="frame" x="309" y="174" width="85" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="tYl-ti-wW6" secondAttribute="height" multiplier="17:6" id="XC3-Wq-Pzb"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="sendCommand:" destination="zum-gU-zPL" eventType="touchUpInside" id="UQJ-pL-tzX"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Canary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKB-GS-AKT">
-                                <rect key="frame" x="100" y="93" width="150" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKB-GS-AKT">
+                                <rect key="frame" x="132" y="94" width="150" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="FKB-GS-AKT" secondAttribute="height" multiplier="150:53" id="t8B-t3-7ra"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="44"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tYl-ti-wW6" firstAttribute="trailing" secondItem="yrP-SZ-xLK" secondAttribute="trailingMargin" id="4ea-af-PAR"/>
+                            <constraint firstItem="tYl-ti-wW6" firstAttribute="trailing" secondItem="yrP-SZ-xLK" secondAttribute="trailingMargin" id="85H-SJ-ztM"/>
+                            <constraint firstItem="0Q2-cW-2Qa" firstAttribute="top" secondItem="FKB-GS-AKT" secondAttribute="bottom" constant="27" id="Gdh-Y9-iLY"/>
+                            <constraint firstItem="tYl-ti-wW6" firstAttribute="trailing" secondItem="yrP-SZ-xLK" secondAttribute="trailingMargin" id="OFx-4f-i3f"/>
+                            <constraint firstItem="0Q2-cW-2Qa" firstAttribute="leading" secondItem="yrP-SZ-xLK" secondAttribute="leadingMargin" id="OXj-Hf-fle"/>
+                            <constraint firstItem="tYl-ti-wW6" firstAttribute="leading" secondItem="0Q2-cW-2Qa" secondAttribute="trailing" constant="15" id="bjs-Kq-mYd"/>
+                            <constraint firstItem="0Q2-cW-2Qa" firstAttribute="top" secondItem="FKB-GS-AKT" secondAttribute="bottom" constant="27" id="dbJ-D0-Bdr"/>
+                            <constraint firstItem="0Q2-cW-2Qa" firstAttribute="leading" secondItem="yrP-SZ-xLK" secondAttribute="leadingMargin" id="f65-7C-NWD"/>
+                            <constraint firstItem="tYl-ti-wW6" firstAttribute="leading" secondItem="0Q2-cW-2Qa" secondAttribute="trailing" constant="15" id="fJj-Ky-49f"/>
+                            <constraint firstItem="FKB-GS-AKT" firstAttribute="centerX" secondItem="yrP-SZ-xLK" secondAttribute="centerX" id="feg-OP-x5C"/>
+                            <constraint firstItem="FKB-GS-AKT" firstAttribute="top" secondItem="O3h-xa-jie" secondAttribute="bottom" constant="30" id="iyo-B2-hp7"/>
+                            <constraint firstItem="tYl-ti-wW6" firstAttribute="leading" secondItem="0Q2-cW-2Qa" secondAttribute="trailing" constant="15" id="jjF-Zs-Kcp"/>
+                            <constraint firstItem="0Q2-cW-2Qa" firstAttribute="leading" secondItem="yrP-SZ-xLK" secondAttribute="leadingMargin" id="zl6-OG-LvV"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4Td-bv-yt1"/>
                     <connections>
@@ -161,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yil-ER-zqT" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2505.5999999999999" y="136.73163418290855"/>
+            <point key="canvasLocation" x="2502.898550724638" y="136.14130434782609"/>
         </scene>
     </scenes>
 </document>
