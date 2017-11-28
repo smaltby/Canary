@@ -133,7 +133,7 @@ public class SpotifyHandler implements SpotifyPlayer.NotificationCallback, Conne
     }
 
     @Override
-    public void onLoginFailed(int i)
+    public void onLoginFailed(Error error)
     {
 
     }
