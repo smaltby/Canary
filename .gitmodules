@@ -1,0 +1,3 @@
+[submodule "cpp/spotify-api-plusplus"]
+	path = cpp/spotify-api-plusplus
+	url = https://github.com/smaltby/spotify-api-plusplus.git

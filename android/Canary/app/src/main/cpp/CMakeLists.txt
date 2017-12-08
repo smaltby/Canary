@@ -33,6 +33,7 @@ add_library(main SHARED
 
 target_include_directories(main PRIVATE
                            ${libs_DIR}/${ANDROID_ABI}/include
+                           ${libs_DIR}/include
                            ${CMAKE_CURRENT_SOURCE_DIR}
                            ${shared_codebase_DIR}
                            )

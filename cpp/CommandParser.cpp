@@ -1,7 +1,7 @@
 #include <CommandParser.h>
 #include <SpotifyHandler.h>
-#include <spotify-api-plusplus/src/utils/SpotifyException.h>
-#include <spotify-api-plusplus/src/utils/CurlException.h>
+#include <utils/SpotifyException.h>
+#include <utils/CurlException.h>
 
 CommandParser::CommandParser()
 {

@@ -1,17 +1,8 @@
 apply plugin: 'com.android.application'
 
 def keystorePropertiesFile = rootProject.file("keystore.properties")
-keystorePropertiesFile.exists()
-
 def keystoreProperties = new Properties()
-if(keystorePropertiesFile.exists()) {
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-} else {
-    keystoreProperties.setProperty('keyAlias', '')
-    keystoreProperties.setProperty('keyPassword', '')
-    keystoreProperties.setProperty('storeFile', ' ')
-    keystoreProperties.setProperty('storePassword', '')
-}
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
     signingConfigs {
@@ -22,13 +13,13 @@ android {
             storePassword keystoreProperties['storePassword']
         }
     }
-    compileSdkVersion = 27
-    buildToolsVersion = '27.0.1'
+    compileSdkVersion = 25
+    buildToolsVersion = '25.0.2'
 
     defaultConfig {
         applicationId = 'me.seanmaltby.canary'
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 25
         versionCode = 1
         versionName = '1.0'
         ndk {
@@ -37,7 +28,7 @@ android {
         externalNativeBuild {
             cmake {
                 arguments '-DANDROID_PLATFORM=android-21',
-                        '-DANDROID_TOOLCHAIN=clang', '-DANDROID_STL=c++_shared'
+                        '-DANDROID_TOOLCHAIN=clang', '-DANDROID_STL=c++_static'
                 cppFlags "-std=c++11 -frtti -fexceptions"
             }
         }
@@ -72,11 +63,9 @@ repositories {
     flatDir {
         dirs 'libs'
     }
-    google()
 }
 
 dependencies {
-<<<<<<< HEAD
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
@@ -87,12 +76,4 @@ dependencies {
     // and also uncommented out the one in settings.gradle
     // after lib is generated, just comment them out again
     //compile project(':gen-libs')
-=======
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:27.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.spotify.sdk:spotify-auth-beta23-noconnect-2.20b@aar'
-    implementation 'com.spotify.sdk:spotify-player-beta23-noconnect-2.20b@aar'
-    implementation 'org.webrtc:google-webrtc:1.0.+'
->>>>>>> master
 }
