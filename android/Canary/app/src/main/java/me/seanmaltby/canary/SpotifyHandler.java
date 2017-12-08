@@ -23,7 +23,7 @@ public class SpotifyHandler implements SpotifyPlayer.NotificationCallback, Conne
         @Override
         public void onSuccess()
         {
-            Log.d(TAG, "Opeartion sucessful");
+            Log.d(TAG, "Operation sucessful");
         }
 
         @Override

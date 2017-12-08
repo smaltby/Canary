@@ -74,7 +74,6 @@ gen-external-apklibs
 *.pch
 
 # Compiled Dynamic libraries
-*.dylib
 *.dll
 
 # Fortran module files
@@ -283,3 +282,16 @@ gradle-app.setting
 
 .DS_Store
 keystore.properties
+
+# Toolchains
+arm64-v8a-android-toolchain/
+armeabi-android-toolchain/
+armeabi-v7a-android-toolchain/
+x86_64-android-toolchain/
+x86-android-toolchain/
+
+# gen-libs
+gen-libs/curl*/
+gen-libs/libs/
+gen-libs/spotify-api-plusplus*/
+gen-libs/openssl*/
