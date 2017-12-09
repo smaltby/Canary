@@ -10,6 +10,8 @@
 
 std::string data;
 
+std::map<std::string, std::string> parse_json(std::string json);
+
 CommandParser::CommandParser()
 {
     playAlbumBy = std::regex("^(play|shuffle) album (.+) by (.+)$");
@@ -89,8 +91,66 @@ std::string CommandParser::parse(std::string command, std::string accessToken)
     curl_easy_cleanup(curl);
     curl_global_cleanup();
 
+    std::map<std::string, std::string> wit_ai_data = parse_json(data);
+
+    if(wit_ai_data["intent"] == "playAlbumBy")
+        return handler.playAlbumBy(wit_ai_data["album"], wit_ai_data["artist"], wit_ai_data["playback"] == "shuffle");
+    else if(wit_ai_data["intent"] == "playAlbum")
+        return handler.playAlbum(wit_ai_data["album"], wit_ai_data["playback"] == "shuffle");
+    else if(wit_ai_data["intent"] == "playArtist")
+        return handler.playArtist(wit_ai_data["artist"], wit_ai_data["playback"] == "shuffle");
+    else if(wit_ai_data["intent"] == "playPlaylist")
+        return handler.playPlaylist(wit_ai_data["playlist"], wit_ai_data["playback"] == "shuffle");
+    else if(wit_ai_data["intent"] == "playSongFromBy")
+        return handler.playTrackFromBy(wit_ai_data["song"], wit_ai_data["album"], wit_ai_data["artist"]);
+    else if(wit_ai_data["intent"] == "playSongFrom")
+        return handler.playTrackFrom(wit_ai_data["song"], wit_ai_data["album"]);
+    else if(wit_ai_data["intent"] == "playTrackBy")
+        return handler.playTrackBy(wit_ai_data["song"], wit_ai_data["artist"]);
+    else if(wit_ai_data["intent"] == "playSong")
+        return handler.playTrack(wit_ai_data["song"]);
+    else if(wit_ai_data["intent"] == "pause")
+        return handler.pause();
+    else if(wit_ai_data["intent"] == "resume")
+        return handler.resume();
+    else if(wit_ai_data["intent"] == "skip")
+        return handler.next();
+    else if(wit_ai_data["intent"] == "shuffle")
+        return handler.toggleShuffle(wit_ai_data["playback"] == "shuffle");
+    else if(wit_ai_data["intent"] == "repeat")
+        return handler.toggleShuffle(wit_ai_data["playback"] == "repeat");
+
+
     return "error invalid input";
 }
+
+std::map<std::string, std::string> parse_json(std::string json) {
+    std::map<std::string,std::string> data;
+
+    int i = json.find("{", json.find("entities")) + 12;
+
+    //get all keys from entities
+    while(i < json.length()) {
+        std ::string key = "";
+        while(json[i] != '"')
+            key+= json[i];
+            i++;
+
+        std::string value = "";
+        i = json.find("value", i) + 7;
+        while(json[i] != '"') {
+            value += json[i];
+        }
+
+        i = json.find("]", i) + 3;
+
+        //stop finding keys when we run out.
+        //we run out when there are no more new dictionaries left
+        if(json.find("{") == std::string::npos) {
+            break;
+        }
+    }
+};
 
 
 
