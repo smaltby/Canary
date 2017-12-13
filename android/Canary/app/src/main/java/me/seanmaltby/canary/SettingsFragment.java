@@ -83,12 +83,21 @@ public class MainActivity extends Activity
 
     // Initialize speech service for recording keyword for keyword activitation setting
     // Initialize shared preferences for saving all settings
-    private void initialize()
+    private void initialize(Settings setting)
     {
         bindService(new Intent(this, SpeechRecognitionService.class), mSpeechRecognitionConnection, Context.BIND_AUTO_CREATE);
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+        pref.setApplicationSettings(setting);
         Editor editor = pref.edit();
         Log.d(TAG, "Binded service");
+    }
+
+    public void openSettings()
+    {
+      Settings setting = new Settings();
+      setting = getApplicationSettings();
+      initialize(setting);
+      Log.d(TAG, "Settings initialized");
     }
 
     @Override

@@ -189,6 +189,16 @@ public class MainActivity extends Activity
         mTextToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
     }
 
+    public void openSettings()
+    {
+      setContentView(R.layout.activity_settings);
+    }
+
+    public void closeSettings()
+    {
+      setContentView(R.layout.activity_main);
+    }
+
     private static class IncomingHandler extends Handler
     {
         private WeakReference<MainActivity> mTarget;
