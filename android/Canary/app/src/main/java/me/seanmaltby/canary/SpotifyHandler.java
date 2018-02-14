@@ -23,7 +23,7 @@ public class SpotifyHandler implements SpotifyPlayer.NotificationCallback, Conne
         @Override
         public void onSuccess()
         {
-            Log.d(TAG, "Operation sucessful");
+            Log.d(TAG, "Operation successful");
         }
 
         @Override
@@ -123,7 +123,7 @@ public class SpotifyHandler implements SpotifyPlayer.NotificationCallback, Conne
     @Override
     public void onLoggedIn()
     {
-        Log.d(TAG, "Logged into Spotify sucessfully");
+        Log.d(TAG, "Logged into Spotify successfully");
     }
 
     @Override
@@ -133,7 +133,7 @@ public class SpotifyHandler implements SpotifyPlayer.NotificationCallback, Conne
     }
 
     @Override
-    public void onLoginFailed(int i)
+    public void onLoginFailed(Error error)
     {
 
     }
